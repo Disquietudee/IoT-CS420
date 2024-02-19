@@ -1,0 +1,38 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "community",
+  "signedByOrg": "nline",
+  "signedByOrgName": "nLine",
+  "plugin": "nline-plotlyjs-panel",
+  "version": "1.6.5",
+  "time": 1704748647257,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "CHANGELOG.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "img/plotly-large.png": "a86da206c6e52d93e92ada250d240bf73ed6653011e5e4548c13669760873474",
+    "img/plotly-small.png": "1aecd3e2a852a8f3d47c71f28ba34e0dbcd5cf79b0f0c19b70489415252de3e9",
+    "module.js.LICENSE.txt": "22a6abaa4b69624ce655559f7e2588cdb5f8f9d230cf02b3a0a404a723569858",
+    "plugin.json": "d688417bc27293cadf70b51e14b7d71604fd55be93aefd2f1d33f237014a970f",
+    "screenshots/editor.png": "8165ce23d933c3db4de03461362ebb573a62d2813af8d7c2fcc68cb7bf7d5d0d",
+    "screenshots/panel.png": "c318546474eec887ef13d8683d228c0bb95aa758dc01b05a7259907eacc93edb",
+    "module.js.map": "e9ae31455bf3668fefaeea0eb329f5bc72411a5b3af9bcc199aa3b29275d9c1a",
+    "LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "module.js": "5b19a285eb5c466056312edd0dd770f803bdc10e59843895e01064fb57bf4643",
+    "README.md": "e33d53b186d79eb57c439267742d12515d1d739f4b1139572a717d451875c3f2"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+Version: OpenPGP.js v4.10.10
+Comment: https://openpgpjs.org
+
+wrgEARMKAAYFAmWcZmcAIQkQfk0ManCIZucWIQTzOyW2kQdOhGNlcPN+TQxq
+cIhm5waRAgjM9cWX1TcHMp20vp3v/NWt5bS2c5N+0tiMW9RTX5CEexRbYg1C
+mO3et7kreZkfTWKltOcUKaVMbgaLs/kmioBVbAIJAcjsuQxDNfbGoctGwksB
+TaYehYTrIXd+2R9q8wxuKA1g3nYKFSiXonNpkbhb80onMlyyT/+OnWsy+1CD
+4RZyN0vl
+=7nm1
+-----END PGP SIGNATURE-----
