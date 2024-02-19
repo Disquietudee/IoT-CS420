@@ -1,0 +1,79 @@
+[
+    {
+        "id": "52813cb27ee7a04f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "63b3192eee14fbc2",
+        "type": "mqtt-broker",
+        "name": "Vidal MQTT Broker",
+        "broker": "wso.vidalsolution.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9cc82476d54e80d9",
+        "type": "mqtt in",
+        "z": "52813cb27ee7a04f",
+        "name": "",
+        "topic": "/milesight/uplink",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "63b3192eee14fbc2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "56c6ba88c7b0a30b"
+            ]
+        ]
+    },
+    {
+        "id": "56c6ba88c7b0a30b",
+        "type": "debug",
+        "z": "52813cb27ee7a04f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 300,
+        "wires": []
+    }
+]

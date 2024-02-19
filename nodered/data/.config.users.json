@@ -15,6 +15,10 @@
             "tours": {
                 "welcome": "3.1.5"
             }
+        },
+        "debug": {
+            "filter": "filterAll",
+            "filteredNodes": []
         }
     }
 }

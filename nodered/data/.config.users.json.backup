@@ -11,7 +11,16 @@
                 "view-node-show-label": true,
                 "view-show-tips": true,
                 "view-show-welcome-tours": true
+            },
+            "tours": {
+                "welcome": "3.1.5"
             }
+        },
+        "debug": {
+            "filter": "filterSelected",
+            "filteredNodes": [
+                "56c6ba88c7b0a30b"
+            ]
         }
     }
 }
