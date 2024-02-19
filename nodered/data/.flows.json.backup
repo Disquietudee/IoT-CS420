@@ -39,6 +39,21 @@
         "sessionExpiry": ""
     },
     {
+        "id": "cb46eb49b0641803",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.8-flux",
+        "url": "http://influxdb:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
         "id": "9cc82476d54e80d9",
         "type": "mqtt in",
         "z": "52813cb27ee7a04f",
@@ -55,15 +70,16 @@
         "y": 300,
         "wires": [
             [
-                "56c6ba88c7b0a30b"
+                "a3a12e0784e2d395",
+                "9ba7c5b18fc1083a"
             ]
         ]
     },
     {
-        "id": "56c6ba88c7b0a30b",
+        "id": "ea4d99d2ba299342",
         "type": "debug",
         "z": "52813cb27ee7a04f",
-        "name": "debug 1",
+        "name": "debug 2",
         "active": true,
         "tosidebar": true,
         "console": true,
@@ -72,8 +88,117 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 510,
-        "y": 300,
+        "x": 690,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7542ddd7b85e7b75",
+        "type": "inject",
+        "z": "52813cb27ee7a04f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.co2",
+                "v": "843",
+                "vt": "num"
+            },
+            {
+                "p": "payload.humidity",
+                "v": "79",
+                "vt": "num"
+            },
+            {
+                "p": "payload.temperature",
+                "v": "24.2",
+                "vt": "num"
+            },
+            {
+                "p": "payload.devEUI",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "payload.deviceName",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload.time",
+                "v": "2024-02-19T18:52:07.620394Z",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "test",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "a3a12e0784e2d395"
+            ]
+        ]
+    },
+    {
+        "id": "a3a12e0784e2d395",
+        "type": "function",
+        "z": "52813cb27ee7a04f",
+        "name": "function 1",
+        "func": "var payload = msg.payload;\n\n// var newPayLoad = {payload:{\n//                     co2: payload.co2, \n//                     humidity: payload.humidity,\n//                     temperature: payload.temperature,\n//                     devEUI: payload.devEUI,\n//                     deviceName: payload.deviceName,\n//                     timestamp: payload.time}\n//                 };\n\n// return newPayLoad;\n\nmsg.payload = [\n    {\n        temp: payload.temperature,\n        co2: payload.co2,\n        humidity: payload.humidity,\n        time: new Date(payload.time).getTime()\n    },\n    {\n            deviceName: payload.deviceName,\n            deviceID: payload.devEUI\n    }\n]\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "ea4d99d2ba299342",
+                "a2bdacf0665d81ce"
+            ]
+        ]
+    },
+    {
+        "id": "9ba7c5b18fc1083a",
+        "type": "debug",
+        "z": "52813cb27ee7a04f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "a2bdacf0665d81ce",
+        "type": "influxdb out",
+        "z": "52813cb27ee7a04f",
+        "influxdb": "cb46eb49b0641803",
+        "name": "",
+        "measurement": "Sensor",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "db0",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 710,
+        "y": 40,
         "wires": []
     }
 ]

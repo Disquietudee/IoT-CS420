@@ -18,9 +18,7 @@
         },
         "debug": {
             "filter": "filterSelected",
-            "filteredNodes": [
-                "56c6ba88c7b0a30b"
-            ]
+            "filteredNodes": []
         }
     }
 }
