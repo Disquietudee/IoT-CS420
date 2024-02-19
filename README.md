@@ -1,5 +1,10 @@
-To start the docker:
-	docker-compose up -d
+### To start the docker:
+```
+sudo docker-compose up -d
+```
 
-NodeRed:
-	On the browser enter the https://server-ip:1880
+### NodeRed:
+On the browser enter 
+```
+https://server-ip:1880
+```
