@@ -8,3 +8,9 @@ On the browser enter
 ```
 https://server-ip:1880
 ```
+
+### Grafana:
+On the browser enter 
+```
+https://server-ip:3000
+```
