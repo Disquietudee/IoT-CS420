@@ -8,68 +8,68 @@ Hash: SHA512
   "signedByOrg": "grafana",
   "signedByOrgName": "Grafana Labs",
   "plugin": "grafana-oncall-app",
-  "version": "1.3.102",
-  "time": 1707243385754,
+  "version": "1.3.106",
+  "time": 1708450574738,
   "keyId": "7e4d0c6a708866e7",
   "files": {
     "containers/PersonalNotificationSettings/img/default-step.png": "5e36e768a6e0eaeda44a1b2a7f0bd1eccbd8e30883163cd9e00ec592d4699bd2",
     "containers/UsersTimezones/ScheduleUserDetails/img/line.svg": "c191072f1d5cecf93d79fa2dae336e1bd7b40008410a5b627f5a3bc6f2ccac27",
-    "module.js": "f051b293cb42b8e1102d75ccbaaa4cfa62a2b580c35f0240ce13c5d8e1b6594a",
-    "README.md": "a87bcdf48f07579032e40c4ae845b29baf8eb593e42ee3c87d5bf82985ef55d8",
-    "img/d44f5e05e29b3bb3ee16.png": "ef868d8a1685d16963c0f72cf486bc1e975d5206fa69b829baed8e4450848646",
-    "img/621d0a5a4e5cad416776.svg": "5f6f51b52dce6a6eb7f065a833f27710db534239698c7b8d1ebf7aa8d84c0d79",
-    "img/c8ece45b4f7ec1b7938c.svg": "105b228419dfa22ae7fff80679bd109488812748cbb16b6d2a027d07ea65adaf",
-    "img/0ebfd0e2814000be208c.svg": "0562c1b48e3ffac7c828b66df8f70525728b3993117f263cf3a2dd734c726734",
-    "img/d00543edc8c26a657998.png": "81a526d2f95b2db7d89c412ec5d714930da9c8e790c844b0b8b8cfdf3b700673",
-    "img/1c6226ae1a10a60bf9df.svg": "f9335afe052e2c63bbb6a4b8452cf970c67e1bbfe550930af74cc5060d784f16",
-    "img/91a5db5bfead260cde78.svg": "246b49fedb1af944ffd88434e985e67b37a368f5dcc4961517a7216c57293429",
-    "img/86ef1055c4730bb3d788.svg": "8161b88afe5bef3552c8c067ece1daf71fe2f13d3aa7f108bb300ba44ac6e457",
-    "img/ceaa61ea9d4e8741a723.svg": "a00af57b4a49adc28a9087431640643ab3836621390d18703d603e5badd93dd0",
-    "img/07387b09ce02e2f198ff.png": "5e36e768a6e0eaeda44a1b2a7f0bd1eccbd8e30883163cd9e00ec592d4699bd2",
-    "img/8442d494f226240b55cc.svg": "6f68cf6103a9e889e15961743dc989f5ff3af1346ca519e768b91fb7a9883349",
-    "img/1e0deb6bbbca4c0f06ab.svg": "50806d5a65779e79f746398570e0fc322d5de55e19f0be87a275963f0947bb5e",
-    "img/ee4290330df00dd06a46.svg": "9f13d4aa317020f3b13ade4175d5cfb4d74500f88fe6043886b3fd425fbc656f",
-    "img/4ce2fac531b59f729c09.svg": "0ff4010fb4be384849c967a1b72db55f17e5b845afe0864a6cb5080e27842dbd",
-    "img/4658a74bccae5ce9f06b.png": "164a07034b38e0576f8e910b956a6186bef1bb9182b9765ba3dcf91b1b48761a",
-    "img/bbb80525824c11e0ab80.png": "ca003c304f64c1657b8923d316d03eb1b3c086beea1ae0b78427b0d93350a95e",
-    "img/308fb5111252d3f6b00f.png": "a2ecf735088e3db0a75bbeaea29b47e1bf2e17fd0fbc5b5ed5a2cef60d5c081a",
-    "img/553c122cfe1602019a85.svg": "6bbbf24ed2b2f20a302b5a834bba165d7f62246683f9fd590397f3caed891348",
-    "dashboards/oncall_metrics_dashboard.json": "2912dc202c8dcd1f956158569d95453ee9aeb37baf0b7b0cb3cd8b7289a71dee",
-    "LICENSE": "32cb1f2fc54027c81b1889b02d50e389e10dc0c948873fb62ad9253eec4e003d",
-    "module.js.map": "da67ac4564424fa16d568af1eb583dd849ad22b9a844a7c72540bbf1f3ac7bef",
-    "module.js.LICENSE.txt": "6c490602fadc28d14bf24bb70be2452f3f33579f8f806e78809bd162bce96a11",
-    "plugin.json": "04e20dca553828c904d7751c9e513659015f63759b155b741e740b70ba69df9e",
-    "components/Tutorial/icons/bell-icon.svg": "6f68cf6103a9e889e15961743dc989f5ff3af1346ca519e768b91fb7a9883349",
+    "module.js": "0c279d4b59c1cb860dd14be1dfba6779891c05e99254b7491b0462320d83dcbd",
     "components/Tutorial/icons/chat-icon.svg": "9f13d4aa317020f3b13ade4175d5cfb4d74500f88fe6043886b3fd425fbc656f",
-    "components/Tutorial/icons/escalation-icon.svg": "246b49fedb1af944ffd88434e985e67b37a368f5dcc4961517a7216c57293429",
     "components/Tutorial/icons/calendar-icon.svg": "0562c1b48e3ffac7c828b66df8f70525728b3993117f263cf3a2dd734c726734",
     "components/Tutorial/icons/integration-icon.svg": "f9335afe052e2c63bbb6a4b8452cf970c67e1bbfe550930af74cc5060d784f16",
-    "assets/img/ElastAlert.svg": "8161b88afe5bef3552c8c067ece1daf71fe2f13d3aa7f108bb300ba44ac6e457",
-    "assets/img/inbound-email.png": "a2ecf735088e3db0a75bbeaea29b47e1bf2e17fd0fbc5b5ed5a2cef60d5c081a",
-    "assets/img/HeartBeatMonitoring.png": "164a07034b38e0576f8e910b956a6186bef1bb9182b9765ba3dcf91b1b48761a",
-    "assets/img/grafana_icon.svg": "50806d5a65779e79f746398570e0fc322d5de55e19f0be87a275963f0947bb5e",
-    "assets/img/integration-logos.png": "ef868d8a1685d16963c0f72cf486bc1e975d5206fa69b829baed8e4450848646",
-    "assets/img/github_star.svg": "6bbbf24ed2b2f20a302b5a834bba165d7f62246683f9fd590397f3caed891348",
-    "assets/img/qr-code.png": "81a526d2f95b2db7d89c412ec5d714930da9c8e790c844b0b8b8cfdf3b700673",
+    "components/Tutorial/icons/escalation-icon.svg": "246b49fedb1af944ffd88434e985e67b37a368f5dcc4961517a7216c57293429",
+    "components/Tutorial/icons/bell-icon.svg": "6f68cf6103a9e889e15961743dc989f5ff3af1346ca519e768b91fb7a9883349",
     "assets/img/screenshot.png": "cdd9755af174b9d96563fb3b3e3613ff092567d2090bd2a24ee33b357d13a8ec",
+    "assets/img/github_star.svg": "6bbbf24ed2b2f20a302b5a834bba165d7f62246683f9fd590397f3caed891348",
+    "assets/img/inbound-email.png": "a2ecf735088e3db0a75bbeaea29b47e1bf2e17fd0fbc5b5ed5a2cef60d5c081a",
+    "assets/img/slack_instructions.png": "bc4347019b0633a9649d776ff1a3f3046b2648bd5282a6bbe889104cb2c60d82",
     "assets/img/logo.svg": "a00af57b4a49adc28a9087431640643ab3836621390d18703d603e5badd93dd0",
+    "assets/img/qr-code.png": "81a526d2f95b2db7d89c412ec5d714930da9c8e790c844b0b8b8cfdf3b700673",
+    "assets/img/integration-logos.png": "ef868d8a1685d16963c0f72cf486bc1e975d5206fa69b829baed8e4450848646",
     "assets/img/apple-logo.svg": "105b228419dfa22ae7fff80679bd109488812748cbb16b6d2a027d07ea65adaf",
+    "assets/img/grafana_icon.svg": "50806d5a65779e79f746398570e0fc322d5de55e19f0be87a275963f0947bb5e",
+    "assets/img/play-store-logo.svg": "5f6f51b52dce6a6eb7f065a833f27710db534239698c7b8d1ebf7aa8d84c0d79",
     "assets/img/error.svg": "0ff4010fb4be384849c967a1b72db55f17e5b845afe0864a6cb5080e27842dbd",
     "assets/img/PagerDuty.png": "ca003c304f64c1657b8923d316d03eb1b3c086beea1ae0b78427b0d93350a95e",
-    "assets/img/slack_instructions.png": "bc4347019b0633a9649d776ff1a3f3046b2648bd5282a6bbe889104cb2c60d82",
-    "assets/img/play-store-logo.svg": "5f6f51b52dce6a6eb7f065a833f27710db534239698c7b8d1ebf7aa8d84c0d79",
+    "assets/img/ElastAlert.svg": "8161b88afe5bef3552c8c067ece1daf71fe2f13d3aa7f108bb300ba44ac6e457",
+    "assets/img/HeartBeatMonitoring.png": "164a07034b38e0576f8e910b956a6186bef1bb9182b9765ba3dcf91b1b48761a",
+    "plugin.json": "b6862b1cbe2e606228624f363b25952bf09a40e1f3a9b8b8210c19da5985ccf8",
+    "module.js.LICENSE.txt": "6c490602fadc28d14bf24bb70be2452f3f33579f8f806e78809bd162bce96a11",
+    "dashboards/oncall_metrics_dashboard.json": "2837cb27e4f1e8385e62a2672d2e678ac379e94803ec8d2337ca07ecb93f0093",
+    "LICENSE": "32cb1f2fc54027c81b1889b02d50e389e10dc0c948873fb62ad9253eec4e003d",
+    "img/621d0a5a4e5cad416776.svg": "5f6f51b52dce6a6eb7f065a833f27710db534239698c7b8d1ebf7aa8d84c0d79",
+    "img/ceaa61ea9d4e8741a723.svg": "a00af57b4a49adc28a9087431640643ab3836621390d18703d603e5badd93dd0",
+    "img/4ce2fac531b59f729c09.svg": "0ff4010fb4be384849c967a1b72db55f17e5b845afe0864a6cb5080e27842dbd",
+    "img/c8ece45b4f7ec1b7938c.svg": "105b228419dfa22ae7fff80679bd109488812748cbb16b6d2a027d07ea65adaf",
+    "img/553c122cfe1602019a85.svg": "6bbbf24ed2b2f20a302b5a834bba165d7f62246683f9fd590397f3caed891348",
+    "img/86ef1055c4730bb3d788.svg": "8161b88afe5bef3552c8c067ece1daf71fe2f13d3aa7f108bb300ba44ac6e457",
+    "img/ee4290330df00dd06a46.svg": "9f13d4aa317020f3b13ade4175d5cfb4d74500f88fe6043886b3fd425fbc656f",
+    "img/8442d494f226240b55cc.svg": "6f68cf6103a9e889e15961743dc989f5ff3af1346ca519e768b91fb7a9883349",
+    "img/bbb80525824c11e0ab80.png": "ca003c304f64c1657b8923d316d03eb1b3c086beea1ae0b78427b0d93350a95e",
+    "img/4658a74bccae5ce9f06b.png": "164a07034b38e0576f8e910b956a6186bef1bb9182b9765ba3dcf91b1b48761a",
+    "img/308fb5111252d3f6b00f.png": "a2ecf735088e3db0a75bbeaea29b47e1bf2e17fd0fbc5b5ed5a2cef60d5c081a",
+    "img/91a5db5bfead260cde78.svg": "246b49fedb1af944ffd88434e985e67b37a368f5dcc4961517a7216c57293429",
+    "img/0ebfd0e2814000be208c.svg": "0562c1b48e3ffac7c828b66df8f70525728b3993117f263cf3a2dd734c726734",
+    "img/07387b09ce02e2f198ff.png": "5e36e768a6e0eaeda44a1b2a7f0bd1eccbd8e30883163cd9e00ec592d4699bd2",
+    "img/1e0deb6bbbca4c0f06ab.svg": "50806d5a65779e79f746398570e0fc322d5de55e19f0be87a275963f0947bb5e",
+    "img/d44f5e05e29b3bb3ee16.png": "ef868d8a1685d16963c0f72cf486bc1e975d5206fa69b829baed8e4450848646",
+    "img/1c6226ae1a10a60bf9df.svg": "f9335afe052e2c63bbb6a4b8452cf970c67e1bbfe550930af74cc5060d784f16",
+    "img/d00543edc8c26a657998.png": "81a526d2f95b2db7d89c412ec5d714930da9c8e790c844b0b8b8cfdf3b700673",
     "network/oncall-api/types-generator/package.json": "7965067d86fcaa8f026e572373b2d43cbc15ff9846627569673fc757cf6ec1dd",
-    "network/oncall-api/types-generator/types-generator.tsconfig.json": "f80d910d7743eec4e34d8f8ca338be56cf41d7c805ff15ab46e2f973461a7074"
+    "network/oncall-api/types-generator/types-generator.tsconfig.json": "f80d910d7743eec4e34d8f8ca338be56cf41d7c805ff15ab46e2f973461a7074",
+    "README.md": "a87bcdf48f07579032e40c4ae845b29baf8eb593e42ee3c87d5bf82985ef55d8",
+    "module.js.map": "b85893f690c7df482237fe442a5e137d6a528f96033d2492639323272b55636f"
   }
 }
 -----BEGIN PGP SIGNATURE-----
 Version: OpenPGP.js v4.10.10
 Comment: https://openpgpjs.org
 
-wrkEARMKAAYFAmXCd3oAIQkQfk0ManCIZucWIQTzOyW2kQdOhGNlcPN+TQxq
-cIhm51emAgkBKsObQql/FqEtCttRobg204kwQ2YZuNV+Z8kzChkwXHaj231t
-xfr2U7VNbMCuEtX15+1rtwBskDSXnvQLHTjv5j0CCQEi+RPPvDapH/jvPzyB
-ndWAl9qG8Dh2UTCjPDIhrCF7KQtnSTaSv2IWPvGNCLkvUkMJHb7sn2uu6+VT
-olfsnjmOSA==
-=FQtG
+wrcEARMKAAYFAmXU4w4AIQkQfk0ManCIZucWIQTzOyW2kQdOhGNlcPN+TQxq
+cIhm5zVWAgdMPqwK34WELJpoSXlUHQRala0JGgH0cO54K7V/8FItj+8KWhwc
+G7xjIWNSLJO604sFnP7iwy4hMNDPi5RfiNj5fQII036zHwvKFdsHINZTdLhW
+7OEOTj/jJtLS45LEZ1hKasWnWL8koh+25rb5/87KGSLW4pqYR9cgvv5VKHiK
+ZxQvqM8=
+=2JkX
 -----END PGP SIGNATURE-----

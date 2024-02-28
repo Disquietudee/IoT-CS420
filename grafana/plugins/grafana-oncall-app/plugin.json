@@ -36,14 +36,14 @@
         "path": "assets/img/screenshot.png"
       }
     ],
-    "version": "1.3.102",
-    "updated": "2024-02-06",
+    "version": "1.3.106",
+    "updated": "2024-02-20",
     "build": {
-      "time": 1707243385583,
+      "time": 1708450574603,
       "repo": "https://github.com/grafana/oncall",
       "branch": "main",
-      "hash": "d63b5ba026bc8bc2d2a8cf19b2dd7998239d3e4e",
-      "number": 3522
+      "hash": "a8d25d43b2cb86ac5c3ea073238e5f93ab16a1b5",
+      "number": 3588
     }
   },
   "includes": [
