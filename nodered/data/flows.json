@@ -2,7 +2,15 @@
     {
         "id": "52813cb27ee7a04f",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "MQTT Handler",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0a0faea32bacf798",
+        "type": "tab",
+        "label": "Alert Handler",
         "disabled": false,
         "info": "",
         "env": []
@@ -200,5 +208,39 @@
         "x": 730,
         "y": 120,
         "wires": []
+    },
+    {
+        "id": "926bdaf1b0cc69ef",
+        "type": "debug",
+        "z": "0a0faea32bacf798",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ac8d82d85f5520fc",
+        "type": "http in",
+        "z": "0a0faea32bacf798",
+        "name": "",
+        "url": "/alert",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "926bdaf1b0cc69ef"
+            ]
+        ]
     }
 ]

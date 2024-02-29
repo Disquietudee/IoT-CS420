@@ -1,0 +1,228 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.2
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 2ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/data/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 14ms
+11 timing config:load:file:/usr/src/node-red/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 1ms
+14 timing config:load:global Completed in 2ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 1ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 24ms
+19 timing npm:load:configload Completed in 24ms
+20 timing npm:load:mkdirpcache Completed in 1ms
+21 timing npm:load:mkdirplogs Completed in 1ms
+22 verbose title npm remove node-red-contrib-webhookrelay
+23 verbose argv "remove" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "node-red-contrib-webhookrelay"
+24 timing npm:load:setTitle Completed in 1ms
+25 timing config:load:flatten Completed in 3ms
+26 timing npm:load:display Completed in 4ms
+27 verbose logfile logs-max:10 dir:/data/.npm/_logs
+28 verbose logfile /data/.npm/_logs/2024-02-29T18_17_36_228Z-debug-0.log
+29 timing npm:load:logFile Completed in 6ms
+30 timing npm:load:timers Completed in 0ms
+31 timing npm:load:configScope Completed in 0ms
+32 timing npm:load Completed in 38ms
+33 timing arborist:ctor Completed in 1ms
+34 silly logfile start cleaning logs, removing 1 files
+35 silly logfile done cleaning log files
+36 timing idealTree:init Completed in 74ms
+37 timing idealTree:userRequests Completed in 1ms
+38 silly idealTree buildDeps
+39 timing idealTree:#root Completed in 1ms
+40 timing idealTree:buildDeps Completed in 1ms
+41 timing idealTree:fixDepFlags Completed in 4ms
+42 timing idealTree Completed in 81ms
+43 timing arborist:ctor Completed in 0ms
+44 timing reify:loadTrees Completed in 117ms
+45 timing reify:diffTrees Completed in 3ms
+46 silly reify mark retired [ '/data/node_modules/@colors/colors' ]
+47 silly reify mark retired [ '/data/node_modules/@dabh/diagnostics' ]
+48 silly reify mark retired [ '/data/node_modules/@types/triple-beam' ]
+49 silly reify mark retired [ '/data/node_modules/async' ]
+50 silly reify mark retired [ '/data/node_modules/async-limiter' ]
+51 silly reify mark retired [ '/data/node_modules/call-bind' ]
+52 silly reify mark retired [ '/data/node_modules/color' ]
+53 silly reify mark retired [ '/data/node_modules/color-convert' ]
+54 silly reify mark retired [ '/data/node_modules/color-name' ]
+55 silly reify mark retired [ '/data/node_modules/color-string' ]
+56 silly reify mark retired [ '/data/node_modules/colorspace' ]
+57 silly reify mark retired [ '/data/node_modules/define-data-property' ]
+58 silly reify mark retired [ '/data/node_modules/enabled' ]
+59 silly reify mark retired [ '/data/node_modules/es-define-property' ]
+60 silly reify mark retired [ '/data/node_modules/es-errors' ]
+61 silly reify mark retired [ '/data/node_modules/fecha' ]
+62 silly reify mark retired [ '/data/node_modules/fn.name' ]
+63 silly reify mark retired [ '/data/node_modules/function-bind' ]
+64 silly reify mark retired [ '/data/node_modules/get-intrinsic' ]
+65 silly reify mark retired [ '/data/node_modules/gopd' ]
+66 silly reify mark retired [ '/data/node_modules/has-property-descriptors' ]
+67 silly reify mark retired [ '/data/node_modules/has-proto' ]
+68 silly reify mark retired [ '/data/node_modules/has-symbols' ]
+69 silly reify mark retired [ '/data/node_modules/hasown' ]
+70 silly reify mark retired [ '/data/node_modules/inherits' ]
+71 silly reify mark retired [ '/data/node_modules/is-arrayish' ]
+72 silly reify mark retired [ '/data/node_modules/is-stream' ]
+73 silly reify mark retired [ '/data/node_modules/kuler' ]
+74 silly reify mark retired [ '/data/node_modules/logform' ]
+75 silly reify mark retired [ '/data/node_modules/ms' ]
+76 silly reify mark retired [ '/data/node_modules/node-red-contrib-webhookrelay' ]
+77 silly reify mark retired [ '/data/node_modules/object-inspect' ]
+78 silly reify mark retired [ '/data/node_modules/one-time' ]
+79 silly reify mark retired [ '/data/node_modules/qs' ]
+80 silly reify mark retired [ '/data/node_modules/readable-stream' ]
+81 silly reify mark retired [ '/data/node_modules/safe-buffer' ]
+82 silly reify mark retired [ '/data/node_modules/safe-stable-stringify' ]
+83 silly reify mark retired [ '/data/node_modules/set-function-length' ]
+84 silly reify mark retired [ '/data/node_modules/side-channel' ]
+85 silly reify mark retired [ '/data/node_modules/simple-swizzle' ]
+86 silly reify mark retired [ '/data/node_modules/stack-trace' ]
+87 silly reify mark retired [ '/data/node_modules/string_decoder' ]
+88 silly reify mark retired [ '/data/node_modules/text-hex' ]
+89 silly reify mark retired [ '/data/node_modules/triple-beam' ]
+90 silly reify mark retired [ '/data/node_modules/tunnel' ]
+91 silly reify mark retired [ '/data/node_modules/typed-rest-client' ]
+92 silly reify mark retired [ '/data/node_modules/ultron' ]
+93 silly reify mark retired [ '/data/node_modules/underscore' ]
+94 silly reify mark retired [ '/data/node_modules/universal-websocket-client' ]
+95 silly reify mark retired [ '/data/node_modules/util-deprecate' ]
+96 silly reify mark retired [ '/data/node_modules/webhookrelay-ws-client' ]
+97 silly reify mark retired [ '/data/node_modules/winston' ]
+98 silly reify mark retired [ '/data/node_modules/winston-transport' ]
+99 silly reify mark retired [ '/data/node_modules/ws' ]
+100 silly reify moves {
+100 silly reify   '/data/node_modules/@colors/colors': '/data/node_modules/@colors/.colors-wdspZlZ6',
+100 silly reify   '/data/node_modules/@dabh/diagnostics': '/data/node_modules/@dabh/.diagnostics-BVxga9LV',
+100 silly reify   '/data/node_modules/@types/triple-beam': '/data/node_modules/@types/.triple-beam-dEToFQD7',
+100 silly reify   '/data/node_modules/async': '/data/node_modules/.async-qAJ6YcT9',
+100 silly reify   '/data/node_modules/async-limiter': '/data/node_modules/.async-limiter-WYbqyEGa',
+100 silly reify   '/data/node_modules/call-bind': '/data/node_modules/.call-bind-Yv9jQlrb',
+100 silly reify   '/data/node_modules/color': '/data/node_modules/.color-Kh3harum',
+100 silly reify   '/data/node_modules/color-convert': '/data/node_modules/.color-convert-CyDcREMC',
+100 silly reify   '/data/node_modules/color-name': '/data/node_modules/.color-name-VkBrgzKr',
+100 silly reify   '/data/node_modules/color-string': '/data/node_modules/.color-string-zNT8iAWC',
+100 silly reify   '/data/node_modules/colorspace': '/data/node_modules/.colorspace-m3zEcLQZ',
+100 silly reify   '/data/node_modules/define-data-property': '/data/node_modules/.define-data-property-VKT18bAJ',
+100 silly reify   '/data/node_modules/enabled': '/data/node_modules/.enabled-oXNUJo9w',
+100 silly reify   '/data/node_modules/es-define-property': '/data/node_modules/.es-define-property-IEVHdp4Z',
+100 silly reify   '/data/node_modules/es-errors': '/data/node_modules/.es-errors-2sMHs2CU',
+100 silly reify   '/data/node_modules/fecha': '/data/node_modules/.fecha-e57OTQEB',
+100 silly reify   '/data/node_modules/fn.name': '/data/node_modules/.fn.name-m0IuwxO2',
+100 silly reify   '/data/node_modules/function-bind': '/data/node_modules/.function-bind-8LMoDvai',
+100 silly reify   '/data/node_modules/get-intrinsic': '/data/node_modules/.get-intrinsic-y5kFVvYI',
+100 silly reify   '/data/node_modules/gopd': '/data/node_modules/.gopd-mT5X6yfP',
+100 silly reify   '/data/node_modules/has-property-descriptors': '/data/node_modules/.has-property-descriptors-Zkw8eNQa',
+100 silly reify   '/data/node_modules/has-proto': '/data/node_modules/.has-proto-yYgfIZsG',
+100 silly reify   '/data/node_modules/has-symbols': '/data/node_modules/.has-symbols-6o5YgQnL',
+100 silly reify   '/data/node_modules/hasown': '/data/node_modules/.hasown-7vUUDMas',
+100 silly reify   '/data/node_modules/inherits': '/data/node_modules/.inherits-IFktovJP',
+100 silly reify   '/data/node_modules/is-arrayish': '/data/node_modules/.is-arrayish-5SlLFUYB',
+100 silly reify   '/data/node_modules/is-stream': '/data/node_modules/.is-stream-HhpnG6qa',
+100 silly reify   '/data/node_modules/kuler': '/data/node_modules/.kuler-PwEnP6be',
+100 silly reify   '/data/node_modules/logform': '/data/node_modules/.logform-x5dpCylo',
+100 silly reify   '/data/node_modules/ms': '/data/node_modules/.ms-g1irmAFT',
+100 silly reify   '/data/node_modules/node-red-contrib-webhookrelay': '/data/node_modules/.node-red-contrib-webhookrelay-7El2kWri',
+100 silly reify   '/data/node_modules/object-inspect': '/data/node_modules/.object-inspect-geCx57bY',
+100 silly reify   '/data/node_modules/one-time': '/data/node_modules/.one-time-3ciIUcMp',
+100 silly reify   '/data/node_modules/qs': '/data/node_modules/.qs-t2ewpGYR',
+100 silly reify   '/data/node_modules/readable-stream': '/data/node_modules/.readable-stream-VXKeHCl7',
+100 silly reify   '/data/node_modules/safe-buffer': '/data/node_modules/.safe-buffer-RhdIW9jy',
+100 silly reify   '/data/node_modules/safe-stable-stringify': '/data/node_modules/.safe-stable-stringify-JNx76RE3',
+100 silly reify   '/data/node_modules/set-function-length': '/data/node_modules/.set-function-length-hVqCwJXi',
+100 silly reify   '/data/node_modules/side-channel': '/data/node_modules/.side-channel-UuWWjaWY',
+100 silly reify   '/data/node_modules/simple-swizzle': '/data/node_modules/.simple-swizzle-Wp4D3tvH',
+100 silly reify   '/data/node_modules/stack-trace': '/data/node_modules/.stack-trace-pTYW0rFM',
+100 silly reify   '/data/node_modules/string_decoder': '/data/node_modules/.string_decoder-3xV3GvlK',
+100 silly reify   '/data/node_modules/text-hex': '/data/node_modules/.text-hex-tj0pyydL',
+100 silly reify   '/data/node_modules/triple-beam': '/data/node_modules/.triple-beam-L6g4SVuS',
+100 silly reify   '/data/node_modules/tunnel': '/data/node_modules/.tunnel-OmhacCUg',
+100 silly reify   '/data/node_modules/typed-rest-client': '/data/node_modules/.typed-rest-client-A6YXJ3ae',
+100 silly reify   '/data/node_modules/ultron': '/data/node_modules/.ultron-bwq0xtHM',
+100 silly reify   '/data/node_modules/underscore': '/data/node_modules/.underscore-fvI6CS7N',
+100 silly reify   '/data/node_modules/universal-websocket-client': '/data/node_modules/.universal-websocket-client-Pc8rplWe',
+100 silly reify   '/data/node_modules/util-deprecate': '/data/node_modules/.util-deprecate-vvLRni8j',
+100 silly reify   '/data/node_modules/webhookrelay-ws-client': '/data/node_modules/.webhookrelay-ws-client-7IMboPDK',
+100 silly reify   '/data/node_modules/winston': '/data/node_modules/.winston-q1tDXB7N',
+100 silly reify   '/data/node_modules/winston-transport': '/data/node_modules/.winston-transport-ihtVHw3I',
+100 silly reify   '/data/node_modules/ws': '/data/node_modules/.ws-B5PabsSn'
+100 silly reify }
+101 timing reify:retireShallow Completed in 24ms
+102 timing reify:createSparse Completed in 0ms
+103 timing reify:loadBundles Completed in 0ms
+104 timing reify:unpack Completed in 1ms
+105 timing reify:unretire Completed in 0ms
+106 timing build:queue Completed in 0ms
+107 timing build:deps Completed in 1ms
+108 timing build Completed in 2ms
+109 timing reify:build Completed in 2ms
+110 timing reify:trash Completed in 87ms
+111 timing reify:save Completed in 7ms
+112 timing reify Completed in 249ms
+113 silly REMOVE node_modules/ws
+114 silly REMOVE node_modules/winston-transport
+115 silly REMOVE node_modules/winston
+116 silly REMOVE node_modules/webhookrelay-ws-client
+117 silly REMOVE node_modules/util-deprecate
+118 silly REMOVE node_modules/universal-websocket-client
+119 silly REMOVE node_modules/universal-websocket-client/node_modules/ws
+120 silly REMOVE node_modules/universal-websocket-client/node_modules/safe-buffer
+121 silly REMOVE node_modules/underscore
+122 silly REMOVE node_modules/ultron
+123 silly REMOVE node_modules/typed-rest-client
+124 silly REMOVE node_modules/tunnel
+125 silly REMOVE node_modules/triple-beam
+126 silly REMOVE node_modules/text-hex
+127 silly REMOVE node_modules/string_decoder
+128 silly REMOVE node_modules/stack-trace
+129 silly REMOVE node_modules/simple-swizzle
+130 silly REMOVE node_modules/side-channel
+131 silly REMOVE node_modules/set-function-length
+132 silly REMOVE node_modules/safe-stable-stringify
+133 silly REMOVE node_modules/safe-buffer
+134 silly REMOVE node_modules/readable-stream
+135 silly REMOVE node_modules/qs
+136 silly REMOVE node_modules/one-time
+137 silly REMOVE node_modules/object-inspect
+138 silly REMOVE node_modules/node-red-contrib-webhookrelay
+139 silly REMOVE node_modules/ms
+140 silly REMOVE node_modules/logform
+141 silly REMOVE node_modules/kuler
+142 silly REMOVE node_modules/is-stream
+143 silly REMOVE node_modules/is-arrayish
+144 silly REMOVE node_modules/inherits
+145 silly REMOVE node_modules/hasown
+146 silly REMOVE node_modules/has-symbols
+147 silly REMOVE node_modules/has-proto
+148 silly REMOVE node_modules/has-property-descriptors
+149 silly REMOVE node_modules/gopd
+150 silly REMOVE node_modules/get-intrinsic
+151 silly REMOVE node_modules/function-bind
+152 silly REMOVE node_modules/fn.name
+153 silly REMOVE node_modules/fecha
+154 silly REMOVE node_modules/es-errors
+155 silly REMOVE node_modules/es-define-property
+156 silly REMOVE node_modules/enabled
+157 silly REMOVE node_modules/define-data-property
+158 silly REMOVE node_modules/colorspace
+159 silly REMOVE node_modules/color-string
+160 silly REMOVE node_modules/color-name
+161 silly REMOVE node_modules/color-convert
+162 silly REMOVE node_modules/color
+163 silly REMOVE node_modules/call-bind
+164 silly REMOVE node_modules/async-limiter
+165 silly REMOVE node_modules/async
+166 silly REMOVE node_modules/@types/triple-beam
+167 silly REMOVE node_modules/@dabh/diagnostics
+168 silly REMOVE node_modules/@colors/colors
+169 timing command:remove Completed in 256ms
+170 verbose exit 0
+171 timing npm Completed in 373ms
+172 info ok
