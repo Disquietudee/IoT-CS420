@@ -78,7 +78,8 @@
         "y": 300,
         "wires": [
             [
-                "9ba7c5b18fc1083a"
+                "9ba7c5b18fc1083a",
+                "a3a12e0784e2d395"
             ]
         ]
     },
@@ -112,7 +113,7 @@
             },
             {
                 "p": "payload.humidity",
-                "v": "20",
+                "v": "300",
                 "vt": "num"
             },
             {
@@ -260,7 +261,7 @@
         "type": "function",
         "z": "0a0faea32bacf798",
         "name": "function 2",
-        "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value;",
+        "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value.toString();",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

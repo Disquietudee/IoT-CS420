@@ -2,7 +2,7 @@
   ⚠️ Alert Received ⚠️
   
   Sensor: {{ .Labels.alertname }}
-  Value: {{ .Annotations.Values }}
+  Value: {{ .Annotations.value }}
   Alert started at: {{ .StartsAt.Format "Monday, 02-Jan-06 15:04:05 UTC" }}
 
 {{ end }}
