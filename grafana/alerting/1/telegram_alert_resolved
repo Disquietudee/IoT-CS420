@@ -1,6 +1,6 @@
 {{ define "telegram_alert_resolved" }}
   Sensor: {{ .Labels.alertname }}
   Value: {{ .Annotations.value }}
-  Alert started at: {{ .StartsAt.Format "Mon, 02 Jan 2006 15:04:05 UTC" }}
-  Alert resolved at: {{ .EndsAt.Format "Mon, 02 Jan 2006 15:04:05 UTC" }}
+  Alert started at: {{ .StartsAt.Format "Mon, 02 Jan 2006 15:04:05"  }}
+  Alert resolved at: {{ .EndsAt.Format "Mon, 02 Jan 2006 15:04:05" }}
 {{ end }}
