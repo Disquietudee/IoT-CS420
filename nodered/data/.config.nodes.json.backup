@@ -448,24 +448,5 @@
                 "file": "/data/node_modules/node-red-contrib-influxdb/influxdb.js"
             }
         }
-    },
-    "node-red-contrib-webhookrelay": {
-        "name": "node-red-contrib-webhookrelay",
-        "version": "0.3.0",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "webhookrelay": {
-                "name": "webhookrelay",
-                "types": [
-                    "webhookrelay"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-webhookrelay",
-                "file": "/data/node_modules/node-red-contrib-webhookrelay/webhookrelay.js"
-            }
-        }
     }
 }
