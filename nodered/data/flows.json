@@ -78,7 +78,6 @@
         "y": 300,
         "wires": [
             [
-                "a3a12e0784e2d395",
                 "9ba7c5b18fc1083a"
             ]
         ]
@@ -113,22 +112,22 @@
             },
             {
                 "p": "payload.humidity",
-                "v": "79",
+                "v": "20",
                 "vt": "num"
             },
             {
                 "p": "payload.temperature",
-                "v": "24.2",
+                "v": "80",
                 "vt": "num"
             },
             {
                 "p": "payload.devEUI",
-                "v": "test",
+                "v": "24e124710c140971",
                 "vt": "str"
             },
             {
                 "p": "payload.deviceName",
-                "v": "test",
+                "v": "AM319-Sensor_1",
                 "vt": "str"
             },
             {
@@ -137,8 +136,8 @@
             },
             {
                 "p": "payload.time",
-                "v": "2024-02-19T18:52:07.620394Z",
-                "vt": "str"
+                "v": "",
+                "vt": "date"
             }
         ],
         "repeat": "",
@@ -222,8 +221,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 280,
+        "x": 640,
+        "y": 240,
         "wires": []
     },
     {
@@ -235,12 +234,61 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 420,
+        "x": 400,
         "y": 280,
         "wires": [
             [
-                "926bdaf1b0cc69ef"
+                "926bdaf1b0cc69ef",
+                "13cd2eafdcc8a123",
+                "40f9d0221e22c1b1"
             ]
         ]
+    },
+    {
+        "id": "13cd2eafdcc8a123",
+        "type": "http response",
+        "z": "0a0faea32bacf798",
+        "name": "OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "40f9d0221e22c1b1",
+        "type": "function",
+        "z": "0a0faea32bacf798",
+        "name": "function 2",
+        "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value.toString();",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 120,
+        "wires": [
+            [
+                "3251c3c4176e0280"
+            ]
+        ]
+    },
+    {
+        "id": "3251c3c4176e0280",
+        "type": "debug",
+        "z": "0a0faea32bacf798",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 120,
+        "wires": []
     }
 ]

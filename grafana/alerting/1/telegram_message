@@ -1,0 +1,8 @@
+{{ define "telegram_message" }}
+  {{ if gt (len .Alerts.Firing) 0 }}
+  <b>🔥 {{ len .Alerts.Firing }} alert(s) firing:</b>
+    {{ range .Alerts.Firing }} {{ template "telegram_alert_firing" .}} {{ end }} {{ end }}
+  {{ if gt (len .Alerts.Resolved) 0 }}
+  <b>✅ {{ len .Alerts.Resolved }} alert(s) resolved:</b>
+    {{ range .Alerts.Resolved }} {{ template "telegram_alert_resolved" .}} {{ end }} {{ end }}
+{{ end }}
