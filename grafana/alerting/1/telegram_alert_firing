@@ -5,4 +5,5 @@
   Value: {{ .Annotations.value }}
   Alert started at: {{ .StartsAt.Format "Mon, 02 Jan 2006 15:04:05"  }}
 
+  Mitigation: {{ .Annotations.Mitigation }}
 {{ end }}
