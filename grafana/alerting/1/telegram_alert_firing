@@ -1,9 +1,12 @@
 {{ define "telegram_alert_firing" }}
   ⚠️ Alert Received ⚠️
-  
+
   Sensor: {{ .Labels.alertname }}
   Value: {{ .Annotations.value }}
   Alert started at: {{ .StartsAt.Format "Mon, 02 Jan 2006 15:04:05"  }}
-
+  {{ if eq .Labels.alertname "DatasourceNoData" }}
+  Mitigation: "Ensure the sensor is properly connected and sending data."
+  {{ else }}
   Mitigation: {{ .Annotations.Mitigation }}
+  {{ end }}
 {{ end }}

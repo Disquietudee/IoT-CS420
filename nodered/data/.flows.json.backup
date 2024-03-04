@@ -108,17 +108,17 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "843",
+                "v": "343",
                 "vt": "num"
             },
             {
                 "p": "payload.humidity",
-                "v": "90",
+                "v": "23",
                 "vt": "num"
             },
             {
                 "p": "payload.temperature",
-                "v": "80",
+                "v": "30",
                 "vt": "num"
             },
             {
