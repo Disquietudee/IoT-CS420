@@ -62,7 +62,7 @@ services:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD}
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: grafana-oncall-app
-      GF_INSTALL_PLUGINS: grafana-oncall-app,nline-plotlyjs-panel,volkovlabs-form-panel, briangann-gauge-panel
+      GF_INSTALL_PLUGINS: grafana-oncall-app,nline-plotlyjs-panel,volkovlabs-form-panel, briangann-gauge-panel, gapit-htmlgraphics-panel
     ports:
       - "3000:3000"
     volumes:
