@@ -19,8 +19,9 @@
         "debug": {
             "filter": "filterCurrent",
             "filteredNodes": [
-                "ea4d99d2ba299342",
-                "9ba7c5b18fc1083a"
+                "9ba7c5b18fc1083a",
+                "926bdaf1b0cc69ef",
+                "3251c3c4176e0280"
             ]
         },
         "menu-menu-item-sidebar": true

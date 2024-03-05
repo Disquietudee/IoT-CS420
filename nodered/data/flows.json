@@ -65,7 +65,7 @@
         "id": "9cc82476d54e80d9",
         "type": "mqtt in",
         "z": "52813cb27ee7a04f",
-        "name": "",
+        "name": "Vidal MQTT Broker",
         "topic": "/milesight/uplink",
         "qos": "2",
         "datatype": "auto-detect",
@@ -74,7 +74,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 300,
+        "x": 310,
         "y": 300,
         "wires": [
             [
@@ -146,8 +146,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "test",
-        "x": 170,
-        "y": 120,
+        "x": 290,
+        "y": 160,
         "wires": [
             [
                 "a3a12e0784e2d395"
@@ -159,7 +159,7 @@
         "type": "function",
         "z": "52813cb27ee7a04f",
         "name": "function 1",
-        "func": "var payload = msg.payload;\n\n// var newPayLoad = {payload:{\n//                     co2: payload.co2, \n//                     humidity: payload.humidity,\n//                     temperature: payload.temperature,\n//                     devEUI: payload.devEUI,\n//                     deviceName: payload.deviceName,\n//                     timestamp: payload.time}\n//                 };\n\n// return newPayLoad;\n\nmsg.payload = [\n    {\n        temp: payload.temperature,\n        co2: payload.co2,\n        humidity: payload.humidity,\n        time: new Date(payload.time).getTime()\n    },\n    {\n            deviceName: payload.deviceName,\n            deviceID: payload.devEUI\n    }\n]\n\nreturn msg;",
+        "func": "var payload = msg.payload;\n\npayload.temp = payload.temperature;\ndelete payload.temperature;\n\nvar device = {\n    deviceName: payload.deviceName,\n    deviceID: payload.devEUI\n}\n\npayload.time = new Date(payload.time).getTime();\n\ndelete payload.deviceName;\ndelete payload.devEUI;\n\nmsg.payload = [];\nmsg.payload.push(payload);\nmsg.payload.push(device);\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

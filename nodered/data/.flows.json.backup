@@ -79,7 +79,8 @@
         "wires": [
             [
                 "9ba7c5b18fc1083a",
-                "a3a12e0784e2d395"
+                "a3a12e0784e2d395",
+                "eaa2ca6e683780a2"
             ]
         ]
     },
@@ -108,17 +109,17 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "",
+                "v": "843",
                 "vt": "num"
             },
             {
                 "p": "payload.humidity",
-                "v": "",
+                "v": "23",
                 "vt": "num"
             },
             {
                 "p": "payload.temperature",
-                "v": "",
+                "v": "80",
                 "vt": "num"
             },
             {
@@ -146,11 +147,11 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "test",
-        "x": 170,
-        "y": 120,
+        "x": 290,
+        "y": 160,
         "wires": [
             [
-                "a3a12e0784e2d395"
+                "eaa2ca6e683780a2"
             ]
         ]
     },
@@ -207,6 +208,42 @@
         "bucket": "bucket",
         "x": 730,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "eaa2ca6e683780a2",
+        "type": "function",
+        "z": "52813cb27ee7a04f",
+        "name": "function 3",
+        "func": "var payload = msg.payload;\n\npayload.temp = payload.temperature;\ndelete payload.temperature;\n\nvar device = {\n    deviceName: payload.deviceName,\n    deviceID: payload.devEUI\n}\n\nvar time = new Date(payload.time).getTime();\npayload.time = time;\ndelete payload.deviceName;\ndelete payload.devEUI;\n\nmsg.payload = [];\nmsg.payload.push(payload);\nmsg.payload.push(device);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [
+                "af1873b56f682f5d"
+            ]
+        ]
+    },
+    {
+        "id": "af1873b56f682f5d",
+        "type": "debug",
+        "z": "52813cb27ee7a04f",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 40,
         "wires": []
     },
     {
