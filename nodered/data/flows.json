@@ -108,7 +108,7 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "843",
+                "v": "243",
                 "vt": "num"
             },
             {
@@ -118,7 +118,7 @@
             },
             {
                 "p": "payload.temperature",
-                "v": "80",
+                "v": "20",
                 "vt": "num"
             },
             {

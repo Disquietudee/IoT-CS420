@@ -65,7 +65,7 @@
         "id": "9cc82476d54e80d9",
         "type": "mqtt in",
         "z": "52813cb27ee7a04f",
-        "name": "",
+        "name": "Vidal MQTT Broker",
         "topic": "/milesight/uplink",
         "qos": "2",
         "datatype": "auto-detect",
@@ -74,13 +74,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 300,
+        "x": 310,
         "y": 300,
         "wires": [
             [
                 "9ba7c5b18fc1083a",
-                "a3a12e0784e2d395",
-                "eaa2ca6e683780a2"
+                "a3a12e0784e2d395"
             ]
         ]
     },
@@ -119,7 +118,7 @@
             },
             {
                 "p": "payload.temperature",
-                "v": "80",
+                "v": "20",
                 "vt": "num"
             },
             {
@@ -151,7 +150,7 @@
         "y": 160,
         "wires": [
             [
-                "eaa2ca6e683780a2"
+                "a3a12e0784e2d395"
             ]
         ]
     },
@@ -160,7 +159,7 @@
         "type": "function",
         "z": "52813cb27ee7a04f",
         "name": "function 1",
-        "func": "var payload = msg.payload;\n\n// var newPayLoad = {payload:{\n//                     co2: payload.co2, \n//                     humidity: payload.humidity,\n//                     temperature: payload.temperature,\n//                     devEUI: payload.devEUI,\n//                     deviceName: payload.deviceName,\n//                     timestamp: payload.time}\n//                 };\n\n// return newPayLoad;\n\nmsg.payload = [\n    {\n        temp: payload.temperature,\n        co2: payload.co2,\n        humidity: payload.humidity,\n        time: new Date(payload.time).getTime()\n    },\n    {\n            deviceName: payload.deviceName,\n            deviceID: payload.devEUI\n    }\n]\n\nreturn msg;",
+        "func": "var payload = msg.payload;\n\npayload.temp = payload.temperature;\ndelete payload.temperature;\n\nvar device = {\n    deviceName: payload.deviceName,\n    deviceID: payload.devEUI\n}\n\npayload.time = new Date(payload.time).getTime();\n\ndelete payload.deviceName;\ndelete payload.devEUI;\n\nmsg.payload = [];\nmsg.payload.push(payload);\nmsg.payload.push(device);\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -208,42 +207,6 @@
         "bucket": "bucket",
         "x": 730,
         "y": 120,
-        "wires": []
-    },
-    {
-        "id": "eaa2ca6e683780a2",
-        "type": "function",
-        "z": "52813cb27ee7a04f",
-        "name": "function 3",
-        "func": "var payload = msg.payload;\n\npayload.temp = payload.temperature;\ndelete payload.temperature;\n\nvar device = {\n    deviceName: payload.deviceName,\n    deviceID: payload.devEUI\n}\n\nvar time = new Date(payload.time).getTime();\npayload.time = time;\ndelete payload.deviceName;\ndelete payload.devEUI;\n\nmsg.payload = [];\nmsg.payload.push(payload);\nmsg.payload.push(device);\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 60,
-        "wires": [
-            [
-                "af1873b56f682f5d"
-            ]
-        ]
-    },
-    {
-        "id": "af1873b56f682f5d",
-        "type": "debug",
-        "z": "52813cb27ee7a04f",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 40,
         "wires": []
     },
     {
