@@ -32,6 +32,7 @@ report = {}
 
 for sensor, data in df_dict.items():
     model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf", model_path=".",allow_download=False,n_ctx=6000)
+    
     with model.chat_session(system_template, prompt_template): 
                 print(sensor)
 
