@@ -8,7 +8,7 @@ df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1
 
 # model = GPT4All("wizardlm-13b-v1.2.Q4_0.gguf", model_path=".",allow_download=False,n_ctx=6000)
 
-system_template = '''You're a report generator for Air quality. 
+system_template = '''
 You are given a dataset of CO2 with unit of ppm, temperature with unit of degree celsius and humidity with unit of percentage sensor readings.
 
 There are threshold to indicate that it is green, amber or red.
