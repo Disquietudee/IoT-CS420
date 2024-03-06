@@ -33,7 +33,7 @@ for sensor, data in df_dict.items():
                 print(sensor)
 
                 prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
-                response = model.generate(prompts, temp=0.3, max_tokens=1024)
+                response = model.generate(prompts, temp=0, max_tokens=1024)
                 
                 print(response)
                 report[sensor] = response
