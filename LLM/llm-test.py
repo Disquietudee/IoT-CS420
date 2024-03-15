@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 import os
 from reportlab.pdfgen import canvas
@@ -29,17 +30,22 @@ def generate_model(df_dict):
     prompt_template = 'USER: {0}\nASSISTANT: '
 
     report = {}
-
+    
+    
     for sensor, data in df_dict.items():
-        model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=6000)
+        time_start = datetime.now()
+        model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=7000)
         
         with model.chat_session(system_template, prompt_template): 
                     print(sensor)
 
                     prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
                     report[sensor] = model.generate(prompts, temp=0, max_tokens=1024)
-                    break
                     
+        del model
+        time_end = datetime.now()
+        print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
+                
     return report
 
 def create_pdf(report, scaling_factor, logo_path):
@@ -101,10 +107,10 @@ def create_pdf(report, scaling_factor, logo_path):
     c.save()
 
     
-csv_path = os.path.join(os.getcwd(), "exampledata.csv")
+csv_path = os.path.join(os.getcwd(), "exampledata2.csv")
 df = pd.read_csv(csv_path)
 df = df[df['Sensor Name'].notna()]
-df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
+df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).reset_index(drop=True).to_dict()
 report = generate_model(df_dict)
 logo_path = os.path.join(os.getcwd(), "logo.png")
 create_pdf(report, 0.2, logo_path)
