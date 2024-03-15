@@ -1,0 +1,6 @@
+gpt4all==2.2.1.post1
+pillow==10.2.0
+reportlab==4.1.0
+pandas==2.2.0
+pyarrow==15.0.0
+Flask==3.0.2

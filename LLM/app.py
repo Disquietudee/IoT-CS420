@@ -1,3 +1,4 @@
+from flask import Flask, request, send_file
 from datetime import datetime
 import pandas as pd
 import os
@@ -7,6 +8,9 @@ from reportlab.lib import colors
 from textwrap import wrap
 from PIL import Image
 from gpt4all import GPT4All
+
+app = Flask(__name__)
+
 
 def generate_model(df_dict):
     system_template = '''
@@ -49,7 +53,8 @@ def generate_model(df_dict):
     return report
 
 def create_pdf(report, scaling_factor, logo_path):
-    c = canvas.Canvas("report.pdf", pagesize=letter)
+    report_path = os.path.join(os.getcwd(), "report.pdf")
+    c = canvas.Canvas(report_path, pagesize=letter)
     c.setFillColor(colors.grey)
     c.setFont("Helvetica-Bold", 24)
     x_axis = 650  # Adjusted to start from top
@@ -68,49 +73,85 @@ def create_pdf(report, scaling_factor, logo_path):
     y_axis -= 80  # Adjusted to start from left
     c.drawString(y_axis, x_axis, title)
     y_axis = 20 # Adjusted to start from left
-    
+    c.setFont("Helvetica", 10)
+    c.drawRightString(580, 20, "Page %d" % page_num)
     for sensor, content in report.items():
         # Split content by newline characters and wrap each line
-        content_lines = []
-        for line in content.split('\n'):
-            content_lines.extend(wrap(line, 125, drop_whitespace=True, fix_sentence_endings=True, break_long_words=True))
-            content_lines.append('')
-        content_height = len(content_lines) * 10  # Assuming font size 10
-        sensor_height = 50
-        # Check if content exceeds the remaining space on the page
-        if x_axis - (content_height + sensor_height) < 50:  # Adjust this threshold as needed
+        
+        if x_axis - 50 < 200:  # If adding the content would exceed the remaining space
             c.showPage()  # Move to a new page
             c.setFont("Helvetica-Bold", 24)  # Reset font
             c.drawString(y_axis, 700, title)  # Redraw report title
             x_axis = 680  # Reset starting X-axis position for content
             page_num += 1
-
+            c.setFont("Helvetica", 10)
+            c.drawRightString(580, 20, "Page %d" % page_num)
+            
         x_axis -= 20  # Space for sensor title
         c.setFillColor(colors.grey)
         c.setFont("Helvetica-Bold", 14)
         c.drawString(y_axis, x_axis, sensor)
         x_axis -= 30  # Space for content
-
+        
         # Draw content text
         t = c.beginText(y_axis, x_axis)
         t.setFont("Helvetica", 10)
         t.setFillColor(colors.black)
-
+        
+        content_lines = []
+        for line in content.split('\n'):
+            wrapped_lines = wrap(line, 120, drop_whitespace=True, fix_sentence_endings=True, break_long_words=True)
+            content_lines.extend(wrapped_lines)
+            content_lines.append('')
+        
         for line in content_lines:
+            line_height = 12  # Assuming font size 10
+            if x_axis - line_height < 120:  # If adding the line would exceed the remaining space
+                c.drawText(t)
+                c.showPage()  # Move to a new page
+                c.setFont("Helvetica-Bold", 24)  # Reset font
+                c.drawString(y_axis, 700, title)  # Redraw report title
+                x_axis = 680  # Reset starting X-axis position for content
+                page_num += 1
+                c.setFont("Helvetica", 10)
+                c.drawRightString(580, 20, "Page %d" % page_num)
+                
+                t = c.beginText(y_axis, x_axis)
+                
+                t.setFont("Helvetica", 10)
+                t.setFillColor(colors.black)
+            
             t.textLine(line)
+            x_axis -= line_height
+        
         c.drawText(t)
-        # Adjust X-axis position for content
-        x_axis -= content_height
         # Draw page number
-        c.setFont("Helvetica", 10)
-        c.drawRightString(580, 20, "Page %d" % page_num)
+        
+        
     c.save()
+    return report_path
 
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'csv'
+
+@app.route('/generate_report', methods=['POST'])
+def generate_report():
+    print(len(request.files))
+    if 'file' not in request.files:
+        return 'No file part in the request', 400
+    file = request.files['file']
+    if file.filename == '':
+        return 'No selected file', 400
+    if file and allowed_file(file.filename):
+        df = pd.read_csv(file)
+        
+    df = df[df['Sensor Name'].notna()]
+    df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
+    report = generate_model(df_dict)
     
-csv_path = os.path.join(os.getcwd(), "exampledata.csv")
-df = pd.read_csv(csv_path)
-df = df[df['Sensor Name'].notna()]
-df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
-report = generate_model(df_dict)
-logo_path = os.path.join(os.getcwd(), "logo.png")
-create_pdf(report, 0.2, logo_path)
+    logo_path = os.path.join(os.getcwd(), "logo.png")
+    pdf_path = create_pdf(report, 0.2, logo_path)
+    return send_file(pdf_path, mimetype='application/pdf')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
