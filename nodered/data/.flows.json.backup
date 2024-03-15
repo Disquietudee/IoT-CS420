@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "1db12a15ff463015",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "63b3192eee14fbc2",
         "type": "mqtt-broker",
         "name": "Vidal MQTT Broker",
@@ -108,7 +116,7 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "843",
+                "v": "243",
                 "vt": "num"
             },
             {
@@ -290,6 +298,100 @@
         "statusType": "auto",
         "x": 740,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2ba384c30b1e3525",
+        "type": "comment",
+        "z": "1db12a15ff463015",
+        "name": "Get external parameters every 10 minutes",
+        "info": "",
+        "x": 260,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "03600c78a04c7070",
+        "type": "inject",
+        "z": "1db12a15ff463015",
+        "name": "Location input",
+        "props": [
+            {
+                "p": "location.city",
+                "v": "Singapore",
+                "vt": "str"
+            },
+            {
+                "p": "location.country",
+                "v": "Singapore",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "e029b69ef31c45d1"
+            ]
+        ]
+    },
+    {
+        "id": "e029b69ef31c45d1",
+        "type": "openweathermap",
+        "z": "1db12a15ff463015",
+        "name": "Singapore",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "0389199391458483",
+                "0c23e6a8870aceec"
+            ]
+        ]
+    },
+    {
+        "id": "0389199391458483",
+        "type": "debug",
+        "z": "1db12a15ff463015",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0c23e6a8870aceec",
+        "type": "influxdb out",
+        "z": "1db12a15ff463015",
+        "influxdb": "cb46eb49b0641803",
+        "name": "",
+        "measurement": "Weather",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "db0",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 680,
+        "y": 100,
         "wires": []
     }
 ]
