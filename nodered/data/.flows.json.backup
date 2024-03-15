@@ -8,7 +8,7 @@
         "env": []
     },
     {
-        "id": "0a0faea32bacf798",
+        "id": "6d95658a7bc87260",
         "type": "tab",
         "label": "Alert Handler",
         "disabled": false,
@@ -19,14 +19,6 @@
         "id": "1db12a15ff463015",
         "type": "tab",
         "label": "Get Weather data",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "6d95658a7bc87260",
-        "type": "tab",
-        "label": "Alert Handler",
         "disabled": false,
         "info": "",
         "env": []
@@ -223,183 +215,6 @@
         "bucket": "bucket",
         "x": 730,
         "y": 120,
-        "wires": []
-    },
-    {
-        "id": "926bdaf1b0cc69ef",
-        "type": "debug",
-        "z": "0a0faea32bacf798",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "ac8d82d85f5520fc",
-        "type": "http in",
-        "z": "0a0faea32bacf798",
-        "name": "",
-        "url": "/alert",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 400,
-        "y": 280,
-        "wires": [
-            [
-                "926bdaf1b0cc69ef",
-                "13cd2eafdcc8a123",
-                "40f9d0221e22c1b1"
-            ]
-        ]
-    },
-    {
-        "id": "13cd2eafdcc8a123",
-        "type": "http response",
-        "z": "0a0faea32bacf798",
-        "name": "OK",
-        "statusCode": "200",
-        "headers": {},
-        "x": 610,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "40f9d0221e22c1b1",
-        "type": "function",
-        "z": "0a0faea32bacf798",
-        "name": "function 2",
-        "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value.toString();",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 120,
-        "wires": [
-            [
-                "3251c3c4176e0280"
-            ]
-        ]
-    },
-    {
-        "id": "3251c3c4176e0280",
-        "type": "debug",
-        "z": "0a0faea32bacf798",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "2ba384c30b1e3525",
-        "type": "comment",
-        "z": "1db12a15ff463015",
-        "name": "Get external parameters every 10 minutes",
-        "info": "",
-        "x": 260,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "03600c78a04c7070",
-        "type": "inject",
-        "z": "1db12a15ff463015",
-        "name": "Location input",
-        "props": [
-            {
-                "p": "location.city",
-                "v": "Singapore",
-                "vt": "str"
-            },
-            {
-                "p": "location.country",
-                "v": "Singapore",
-                "vt": "str"
-            }
-        ],
-        "repeat": "600",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 180,
-        "y": 140,
-        "wires": [
-            [
-                "e029b69ef31c45d1"
-            ]
-        ]
-    },
-    {
-        "id": "e029b69ef31c45d1",
-        "type": "openweathermap",
-        "z": "1db12a15ff463015",
-        "name": "Singapore",
-        "wtype": "current",
-        "lon": "",
-        "lat": "",
-        "city": "",
-        "country": "",
-        "language": "en",
-        "x": 390,
-        "y": 140,
-        "wires": [
-            [
-                "0389199391458483",
-                "0c23e6a8870aceec"
-            ]
-        ]
-    },
-    {
-        "id": "0389199391458483",
-        "type": "debug",
-        "z": "1db12a15ff463015",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "0c23e6a8870aceec",
-        "type": "influxdb out",
-        "z": "1db12a15ff463015",
-        "influxdb": "cb46eb49b0641803",
-        "name": "",
-        "measurement": "Weather",
-        "precision": "",
-        "retentionPolicy": "",
-        "database": "db0",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "organisation",
-        "bucket": "bucket",
-        "x": 680,
-        "y": 100,
         "wires": []
     },
     {
@@ -946,6 +761,100 @@
         "info": "",
         "x": 860,
         "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2ba384c30b1e3525",
+        "type": "comment",
+        "z": "1db12a15ff463015",
+        "name": "Get external parameters every 10 minutes",
+        "info": "",
+        "x": 260,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "03600c78a04c7070",
+        "type": "inject",
+        "z": "1db12a15ff463015",
+        "name": "Location input",
+        "props": [
+            {
+                "p": "location.city",
+                "v": "Singapore",
+                "vt": "str"
+            },
+            {
+                "p": "location.country",
+                "v": "Singapore",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "e029b69ef31c45d1"
+            ]
+        ]
+    },
+    {
+        "id": "e029b69ef31c45d1",
+        "type": "openweathermap",
+        "z": "1db12a15ff463015",
+        "name": "Singapore",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "0389199391458483",
+                "0c23e6a8870aceec"
+            ]
+        ]
+    },
+    {
+        "id": "0389199391458483",
+        "type": "debug",
+        "z": "1db12a15ff463015",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0c23e6a8870aceec",
+        "type": "influxdb out",
+        "z": "1db12a15ff463015",
+        "influxdb": "cb46eb49b0641803",
+        "name": "",
+        "measurement": "Weather",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "db0",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 680,
+        "y": 100,
         "wires": []
     }
 ]

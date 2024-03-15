@@ -624,7 +624,7 @@
         ],
         "repeat": "3600",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "x": 130,
@@ -682,7 +682,7 @@
         "initialize": "var client_id = \"dq9cmggkruqmwdpgksgh\";\nvar user_id = \"53LD3QMV\";\nvar device_id = \"bf84186ffdd948c36dtf3x\";\nflow.set(\"tuya_client_id\", client_id);\nflow.set(\"tuya_user_id\", user_id);\nflow.set(\"device_id\", device_id);",
         "finalize": "",
         "libs": [],
-        "x": 130,
+        "x": 150,
         "y": 780,
         "wires": [
             []
