@@ -1,0 +1,103 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.2
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 warn config production Use `--omit=dev` instead.
+8 timing config:load:cli Completed in 3ms
+9 timing config:load:env Completed in 0ms
+10 timing config:load:file:/data/.npmrc Completed in 1ms
+11 timing config:load:project Completed in 3ms
+12 timing config:load:file:/usr/src/node-red/.npmrc Completed in 0ms
+13 timing config:load:user Completed in 0ms
+14 timing config:load:file:/usr/local/etc/npmrc Completed in 4ms
+15 timing config:load:global Completed in 4ms
+16 timing config:load:validate Completed in 0ms
+17 timing config:load:credentials Completed in 1ms
+18 timing config:load:setEnvs Completed in 1ms
+19 timing config:load Completed in 15ms
+20 timing npm:load:configload Completed in 15ms
+21 timing npm:load:mkdirpcache Completed in 1ms
+22 timing npm:load:mkdirplogs Completed in 1ms
+23 verbose title npm install node-red-contrib-crypto-js-dynamic@0.1.22
+24 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--production" "--engine-strict" "node-red-contrib-crypto-js-dynamic@0.1.22"
+25 timing npm:load:setTitle Completed in 1ms
+26 timing config:load:flatten Completed in 3ms
+27 timing npm:load:display Completed in 5ms
+28 verbose logfile logs-max:10 dir:/data/.npm/_logs
+29 verbose logfile /data/.npm/_logs/2024-03-15T10_18_33_593Z-debug-0.log
+30 timing npm:load:logFile Completed in 10ms
+31 timing npm:load:timers Completed in 0ms
+32 timing npm:load:configScope Completed in 0ms
+33 timing npm:load Completed in 35ms
+34 timing arborist:ctor Completed in 0ms
+35 silly logfile start cleaning logs, removing 3 files
+36 silly logfile done cleaning log files
+37 timing idealTree:init Completed in 55ms
+38 timing idealTree:userRequests Completed in 2ms
+39 silly idealTree buildDeps
+40 silly fetch manifest node-red-contrib-crypto-js-dynamic@0.1.22
+41 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+42 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-crypto-js-dynamic 1526ms (cache miss)
+43 silly placeDep ROOT node-red-contrib-crypto-js-dynamic@0.1.22 OK for: node-red-project@0.0.1 want: 0.1.22
+44 silly fetch manifest crypto-js@^3.1.9-1
+45 http fetch GET 200 https://registry.npmjs.org/crypto-js 103ms (cache miss)
+46 timing idealTree:#root Completed in 1636ms
+47 silly placeDep ROOT crypto-js@3.3.0 OK for: node-red-contrib-crypto-js-dynamic@0.1.22 want: ^3.1.9-1
+48 timing idealTree:node_modules/node-red-contrib-crypto-js-dynamic Completed in 1ms
+49 timing idealTree:node_modules/crypto-js Completed in 0ms
+50 timing idealTree:buildDeps Completed in 1639ms
+51 timing idealTree:fixDepFlags Completed in 0ms
+52 timing idealTree Completed in 1698ms
+53 timing reify:loadTrees Completed in 1700ms
+54 timing reify:diffTrees Completed in 2ms
+55 silly reify mark retired [ '/data/node_modules/uuid', '/data/node_modules/.bin/uuid' ]
+56 silly reify mark retired [
+56 silly reify   '/data/node_modules/sshpk',
+56 silly reify   '/data/node_modules/.bin/sshpk-conv',
+56 silly reify   '/data/node_modules/.bin/sshpk-sign',
+56 silly reify   '/data/node_modules/.bin/sshpk-verify'
+56 silly reify ]
+57 silly reify moves {
+57 silly reify   '/data/node_modules/uuid': '/data/node_modules/.uuid-4ltFvtl7',
+57 silly reify   '/data/node_modules/.bin/uuid': '/data/node_modules/.bin/.uuid-AirT9FyH',
+57 silly reify   '/data/node_modules/sshpk': '/data/node_modules/.sshpk-eLsZQtXO',
+57 silly reify   '/data/node_modules/.bin/sshpk-conv': '/data/node_modules/.bin/.sshpk-conv-QPuEKOiy',
+57 silly reify   '/data/node_modules/.bin/sshpk-sign': '/data/node_modules/.bin/.sshpk-sign-IzCPgJfp',
+57 silly reify   '/data/node_modules/.bin/sshpk-verify': '/data/node_modules/.bin/.sshpk-verify-qEecWVxV'
+57 silly reify }
+58 timing reify:retireShallow Completed in 6ms
+59 timing reify:createSparse Completed in 2ms
+60 timing reify:trashOmits Completed in 0ms
+61 timing reify:loadBundles Completed in 0ms
+62 silly tarball no local data for crypto-js@https://registry.npmjs.org/crypto-js/-/crypto-js-3.3.0.tgz. Extracting by manifest.
+63 silly tarball no local data for node-red-contrib-crypto-js-dynamic@https://registry.npmjs.org/node-red-contrib-crypto-js-dynamic/-/node-red-contrib-crypto-js-dynamic-0.1.22.tgz. Extracting by manifest.
+64 warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+65 timing reifyNode:node_modules/uuid Completed in 40ms
+66 timing reifyNode:node_modules/sshpk Completed in 53ms
+67 http fetch GET 200 https://registry.npmjs.org/crypto-js/-/crypto-js-3.3.0.tgz 158ms (cache miss)
+68 timing reifyNode:node_modules/crypto-js Completed in 164ms
+69 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-crypto-js-dynamic/-/node-red-contrib-crypto-js-dynamic-0.1.22.tgz 315ms (cache miss)
+70 timing reifyNode:node_modules/node-red-contrib-crypto-js-dynamic Completed in 322ms
+71 timing reify:unpack Completed in 322ms
+72 timing reify:unretire Completed in 0ms
+73 timing build:queue Completed in 0ms
+74 timing build:link:node_modules/sshpk Completed in 3ms
+75 timing build:link:node_modules/uuid Completed in 3ms
+76 timing build:link Completed in 3ms
+77 timing build:deps Completed in 4ms
+78 timing build Completed in 4ms
+79 timing reify:build Completed in 5ms
+80 timing reify:trash Completed in 22ms
+81 timing reify:save Completed in 23ms
+82 timing reify Completed in 2100ms
+83 silly ADD node_modules/crypto-js
+84 silly ADD node_modules/node-red-contrib-crypto-js-dynamic
+85 silly CHANGE node_modules/sshpk
+86 silly CHANGE node_modules/uuid
+87 timing command:install Completed in 2105ms
+88 verbose exit 0
+89 timing npm Completed in 2237ms
+90 info ok
