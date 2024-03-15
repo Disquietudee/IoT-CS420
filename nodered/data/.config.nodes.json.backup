@@ -1,7 +1,7 @@
 {
     "node-red": {
         "name": "node-red",
-        "version": "3.1.7",
+        "version": "3.1.5",
         "local": false,
         "user": false,
         "nodes": {
@@ -446,6 +446,26 @@
                 "user": false,
                 "module": "node-red-contrib-influxdb",
                 "file": "/data/node_modules/node-red-contrib-influxdb/influxdb.js"
+            }
+        }
+    },
+    "node-red-node-openweathermap": {
+        "name": "node-red-node-openweathermap",
+        "version": "0.5.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "openweathermap": {
+                "name": "openweathermap",
+                "types": [
+                    "openweathermap",
+                    "openweathermap in"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-openweathermap",
+                "file": "/data/node_modules/node-red-node-openweathermap/weather.js"
             }
         }
     }

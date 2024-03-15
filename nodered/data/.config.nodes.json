@@ -1,7 +1,7 @@
 {
     "node-red": {
         "name": "node-red",
-        "version": "3.1.7",
+        "version": "3.1.5",
         "local": false,
         "user": false,
         "nodes": {
@@ -466,6 +466,80 @@
                 "user": false,
                 "module": "node-red-node-openweathermap",
                 "file": "/data/node_modules/node-red-node-openweathermap/weather.js"
+            }
+        }
+    },
+    "node-red-contrib-crypto-js-dynamic": {
+        "name": "node-red-contrib-crypto-js-dynamic",
+        "version": "0.1.22",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "encrypt": {
+                "name": "encrypt",
+                "types": [
+                    "encrypt"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/encrypt.js"
+            },
+            "decrypt": {
+                "name": "decrypt",
+                "types": [
+                    "decrypt"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/decrypt.js"
+            },
+            "hmac": {
+                "name": "hmac",
+                "types": [
+                    "hmac"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/hmac.js"
+            },
+            "digest": {
+                "name": "digest",
+                "types": [
+                    "digest"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/digest.js"
+            },
+            "encode": {
+                "name": "encode",
+                "types": [
+                    "encode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/encode.js"
+            },
+            "decode": {
+                "name": "decode",
+                "types": [
+                    "decode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-crypto-js-dynamic",
+                "file": "/data/node_modules/node-red-contrib-crypto-js-dynamic/cryptojs/decode.js"
             }
         }
     }

@@ -8,7 +8,7 @@
         "env": []
     },
     {
-        "id": "0a0faea32bacf798",
+        "id": "6d95658a7bc87260",
         "type": "tab",
         "label": "Alert Handler",
         "disabled": false,
@@ -218,9 +218,9 @@
         "wires": []
     },
     {
-        "id": "926bdaf1b0cc69ef",
+        "id": "b7a97eec10133ed7",
         "type": "debug",
-        "z": "0a0faea32bacf798",
+        "z": "6d95658a7bc87260",
         "name": "debug 4",
         "active": true,
         "tosidebar": true,
@@ -235,9 +235,9 @@
         "wires": []
     },
     {
-        "id": "ac8d82d85f5520fc",
+        "id": "cd73161b8ebc2dbe",
         "type": "http in",
-        "z": "0a0faea32bacf798",
+        "z": "6d95658a7bc87260",
         "name": "",
         "url": "/alert",
         "method": "post",
@@ -247,27 +247,28 @@
         "y": 280,
         "wires": [
             [
-                "926bdaf1b0cc69ef",
-                "13cd2eafdcc8a123",
-                "40f9d0221e22c1b1"
+                "b7a97eec10133ed7",
+                "6c7c63d6e322095f",
+                "5e25620e30b525d1",
+                "0d0e0c0edb31e33e"
             ]
         ]
     },
     {
-        "id": "13cd2eafdcc8a123",
+        "id": "6c7c63d6e322095f",
         "type": "http response",
-        "z": "0a0faea32bacf798",
+        "z": "6d95658a7bc87260",
         "name": "OK",
         "statusCode": "200",
         "headers": {},
-        "x": 610,
+        "x": 630,
         "y": 360,
         "wires": []
     },
     {
-        "id": "40f9d0221e22c1b1",
+        "id": "5e25620e30b525d1",
         "type": "function",
-        "z": "0a0faea32bacf798",
+        "z": "6d95658a7bc87260",
         "name": "function 2",
         "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value.toString();",
         "outputs": 1,
@@ -280,24 +281,486 @@
         "y": 120,
         "wires": [
             [
-                "3251c3c4176e0280"
+                "e0a8c4260e9a6c43"
             ]
         ]
     },
     {
-        "id": "3251c3c4176e0280",
+        "id": "e0a8c4260e9a6c43",
         "type": "debug",
-        "z": "0a0faea32bacf798",
+        "z": "6d95658a7bc87260",
         "name": "debug 5",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 740,
         "y": 120,
+        "wires": []
+    },
+    {
+        "id": "484c83f6253d2e1e",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "func": "var device_id = flow.get(\"device_id\");\nvar url = \"https://openapi.tuyaeu.com/v1.0/iot-03/devices/\"+device_id+\"/commands\";\nvar t = msg.time;\nvar client_id  = flow.get(\"tuya_client_id\");\nvar creds = flow.get(\"tuya\");\nvar access_token = creds.access_token;\nvar sign = msg.payload;\n\nmsg.headers ={\n \"sign_method\": \"HMAC-SHA256\",\n \"client_id\" : client_id,\n \"t\": t.toString(),\n \"mode\" : \"cors\",\n \"Content-Type\": \"application/json\",\n \"sign\": sign.toUpperCase(),\n \"access_token\" : access_token,\n },\n msg.payload = '{\"commands\":[{\"code\":\"switch_1\",\"value\":false}]}';\n msg.url = url;\n msg.method = \"POST\";\n //msg.payload = '';\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 680,
+        "wires": [
+            [
+                "295b1d3311748b7b"
+            ]
+        ]
+    },
+    {
+        "id": "295b1d3311748b7b",
+        "type": "http request",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1070,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b35152d445e3e16b",
+        "type": "inject",
+        "z": "6d95658a7bc87260",
+        "name": "OFF",
+        "props": [
+            {
+                "p": "time",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"commands\":[{\"code\":\"switch_1\",\"value\":false}]}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "9b18956b3ed99d41"
+            ]
+        ]
+    },
+    {
+        "id": "a9589a8f3834d076",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "Create signStr",
+        "func": "var creds = flow.get(\"tuya\");\nvar access_token = creds.access_token;\nvar device_id = flow.get(\"device_id\");\nvar hashed_size = msg.payload;\nvar t = msg.time;\nvar client_id  = flow.get(\"tuya_client_id\");\nvar token = access_token;\nvar method = \"POST\";\nvar sign_url = \"/v1.0/iot-03/devices/\"+device_id+\"/commands\";\nvar content_hash = hashed_size;\nvar string_to_sign = method+\"\\n\"+content_hash+\"\\n\"+\"\"+\"\\n\"+sign_url;\nvar signStr = client_id+token+t+string_to_sign;\n\nmsg.payload = signStr;\nmsg.time = msg.time;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 680,
+        "wires": [
+            [
+                "f9a9efd96ebff3b5"
+            ]
+        ]
+    },
+    {
+        "id": "f9a9efd96ebff3b5",
+        "type": "hmac",
+        "z": "6d95658a7bc87260",
+        "name": "Sign signStr with secret",
+        "algorithm": "HmacSHA256",
+        "key": "e918febac9634d6da464f722d20ce792",
+        "x": 710,
+        "y": 680,
+        "wires": [
+            [
+                "484c83f6253d2e1e"
+            ]
+        ]
+    },
+    {
+        "id": "4e587d20270c0d82",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "func": "var device_id = flow.get(\"device_id\");\nvar url = \"https://openapi.tuyaeu.com/v1.0/iot-03/devices/\" + device_id + \"/commands\";\nvar t = msg.time;\nvar client_id = flow.get(\"tuya_client_id\");\nvar creds = flow.get(\"tuya\");\nvar access_token = creds.access_token;\nvar sign = msg.payload;\n\nmsg.headers = {\n   \"sign_method\": \"HMAC-SHA256\",\n   \"client_id\": client_id,\n   \"t\": t.toString(),\n   \"mode\": \"cors\",\n   \"Content-Type\": \"application/json\",\n   \"sign\": sign.toUpperCase(),\n   \"access_token\": access_token,\n},\n   msg.payload = '{\"commands\":[{\"code\":\"switch_1\",\"value\":true}]}';\nmsg.url = url;\nmsg.method = \"POST\";\n//msg.payload = '';\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 600,
+        "wires": [
+            [
+                "257e71e2b83c021a"
+            ]
+        ]
+    },
+    {
+        "id": "46c4ee517176dc98",
+        "type": "inject",
+        "z": "6d95658a7bc87260",
+        "name": "ON",
+        "props": [
+            {
+                "p": "time",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"commands\":[{\"code\":\"switch_1\",\"value\":true}]}",
+        "payloadType": "str",
+        "x": 90,
+        "y": 620,
+        "wires": [
+            [
+                "9d794d23425abd68"
+            ]
+        ]
+    },
+    {
+        "id": "facfbf7b59874704",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "Create signStr",
+        "func": "var creds = flow.get(\"tuya\");\nvar access_token = creds.access_token;\nvar device_id = flow.get(\"device_id\");\nvar hashed_size = msg.payload;\nvar t = msg.time;\nvar client_id  = flow.get(\"tuya_client_id\");\nvar token = access_token;\nvar method = \"POST\";\nvar sign_url = \"/v1.0/iot-03/devices/\"+device_id+\"/commands\";\nvar content_hash = hashed_size;\nvar string_to_sign = method+\"\\n\"+content_hash+\"\\n\"+\"\"+\"\\n\"+sign_url;\nvar signStr = client_id+token+t+string_to_sign;\n\nmsg.payload = signStr;\nmsg.time = msg.time;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 600,
+        "wires": [
+            [
+                "c172d186b5cb4dea"
+            ]
+        ]
+    },
+    {
+        "id": "c172d186b5cb4dea",
+        "type": "hmac",
+        "z": "6d95658a7bc87260",
+        "name": "Sign signStr with secret",
+        "algorithm": "HmacSHA256",
+        "key": "e918febac9634d6da464f722d20ce792",
+        "x": 710,
+        "y": 600,
+        "wires": [
+            [
+                "4e587d20270c0d82"
+            ]
+        ]
+    },
+    {
+        "id": "9d794d23425abd68",
+        "type": "digest",
+        "z": "6d95658a7bc87260",
+        "name": "Hash the body data",
+        "algorithm": "SHA256",
+        "x": 270,
+        "y": 600,
+        "wires": [
+            [
+                "facfbf7b59874704"
+            ]
+        ]
+    },
+    {
+        "id": "9b18956b3ed99d41",
+        "type": "digest",
+        "z": "6d95658a7bc87260",
+        "name": "Hash the body data",
+        "algorithm": "SHA256",
+        "x": 270,
+        "y": 680,
+        "wires": [
+            [
+                "a9589a8f3834d076"
+            ]
+        ]
+    },
+    {
+        "id": "257e71e2b83c021a",
+        "type": "http request",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1070,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ddaa0de66e2f186",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "Extract Token ",
+        "func": "var data = msg.payload;\nvar access = data.result.access_token;\nvar refresh = data.result.refresh_token;\n\nvar creds ={\n \"access_token\" : access,\n \"refresh_token\" : refresh\n}\nflow.set(\"tuya\", creds);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "82b23c7906a733a6",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "func": "var url = \"https://openapi.tuyaeu.com/v1.0/token?grant_type=1\";\nvar t = msg.time;\nvar sign = msg.payload;\nvar client_id  = flow.get(\"tuya_client_id\");\nmsg.headers ={\n \"sign_method\": \"HMAC-SHA256\",\n \"client_id\" : client_id,\n \"t\": t.toString(),\n \"sign\": sign.toUpperCase(),\n },\n msg.payload = '';\n msg.url = url;\n msg.method = \"GET\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 820,
+        "wires": [
+            [
+                "fc645a560a7d65ba"
+            ]
+        ]
+    },
+    {
+        "id": "fc645a560a7d65ba",
+        "type": "http request",
+        "z": "6d95658a7bc87260",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 870,
+        "y": 820,
+        "wires": [
+            [
+                "1ddaa0de66e2f186"
+            ]
+        ]
+    },
+    {
+        "id": "18ad8de8e5b0317d",
+        "type": "inject",
+        "z": "6d95658a7bc87260",
+        "name": "Get Access Token",
+        "props": [
+            {
+                "p": "time",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [
+                "a6df3261001f3b45"
+            ]
+        ]
+    },
+    {
+        "id": "a6df3261001f3b45",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "Create signStr",
+        "func": "var client_id  = flow.get(\"tuya_client_id\");\nvar t = msg.time;\n\n\nvar method = \"GET\";\nvar sign_url = \"/v1.0/token?grant_type=1\";\n\n// Couldn't get nodered to process an empty string so this is a hash of an empty file\nvar content_hash = \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\";\nvar string_to_sign = method+\"\\n\"+content_hash+\"\\n\"+\"\"+\"\\n\"+sign_url;\nvar signStr = client_id+t+string_to_sign;\n\nmsg.payload = signStr;\nmsg.time = msg.time;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 820,
+        "wires": [
+            [
+                "82e3e80093cc5364"
+            ]
+        ]
+    },
+    {
+        "id": "82e3e80093cc5364",
+        "type": "hmac",
+        "z": "6d95658a7bc87260",
+        "name": "Sign signStr with secret",
+        "algorithm": "HmacSHA256",
+        "key": "e918febac9634d6da464f722d20ce792",
+        "x": 530,
+        "y": 820,
+        "wires": [
+            [
+                "82b23c7906a733a6"
+            ]
+        ]
+    },
+    {
+        "id": "a81a9187a8cbc358",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "Inital Setup (IDs and flow)",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "var client_id = \"dq9cmggkruqmwdpgksgh\";\nvar user_id = \"53LD3QMV\";\nvar device_id = \"bf84186ffdd948c36dtf3x\";\nflow.set(\"tuya_client_id\", client_id);\nflow.set(\"tuya_user_id\", user_id);\nflow.set(\"device_id\", device_id);",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0d0e0c0edb31e33e",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "function 3",
+        "func": "var sensor = msg.payload;\nvar sensor_name = sensor.alerts[0].labels.alertname;\nvar paremeter = sensor.alerts[0].labels.grafana_folder;\nvar status = sensor.alerts[0].status;\n\nvar s = \"\";\n\nif (sensor_name.includes(\"AM319-Sensor_1\") && paremeter === \"CO2\"){\n    if (status === \"firing\") {\n        s = \"true\";\n    } else {\n        s = \"false\";\n    }\n}\n\nmsg.payload = '{\"commands\":[{\"code\":\"switch_1\",\"value\":'+ s +'}]}';\nmsg.time = Date.now();\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 460,
+        "wires": [
+            [
+                "9d794d23425abd68"
+            ]
+        ]
+    },
+    {
+        "id": "1d2c6f9f4e70042d",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "function 4",
+        "func": "var text = { \"alerts\": [{\"status\":\"firing\",\"labels\":{\"alertname\":\"[Temp] AM319-Sensor_1 (>27)\",\"grafana_folder\":\"Temperature\"},\"annotations\":{\"Mitigation\":\"Ensure that the air conditioner is operating properly.\",\"value\":\"100\"},\"startsAt\":\"2024-03-15T15:52:30+08:00\",\"endsAt\":\"0001-01-01T00:00:00Z\",\"generatorURL\":\"http://localhost:3000/alerting/grafana/f3f0aafb-7c0b-4556-84e0-cca6c03bfd09/view?orgId=1\",\"fingerprint\":\"b98ed156ea4b5677\",\"silenceURL\":\"http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3D%5BTemp%5D+AM319-Sensor_1+%28%3E27%29&matcher=grafana_folder%3DTemperature&orgId=1\",\"dashboardURL\":\"http://localhost:3000/d/bca9244c-118e-4dcc-a01c-1be123a4e845?orgId=1\",\"panelURL\":\"http://localhost:3000/d/bca9244c-118e-4dcc-a01c-1be123a4e845?orgId=1&viewPanel=1\",\"values\":{\"B\":100,\"C\":1},\"valueString\":\"[ var='B' labels={} value=100 ], [ var='C' labels={} value=1 ]\"}]};\n\nmsg.payload = text;\nmsg.time = Date.now();\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 500,
+        "wires": [
+            [
+                "0d0e0c0edb31e33e"
+            ]
+        ]
+    },
+    {
+        "id": "9b4bf30a356f2a27",
+        "type": "inject",
+        "z": "6d95658a7bc87260",
+        "name": "test",
+        "props": [
+            {
+                "p": "timqqq",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 500,
+        "wires": [
+            [
+                "1d2c6f9f4e70042d"
+            ]
+        ]
+    },
+    {
+        "id": "45a23539726a3eab",
+        "type": "comment",
+        "z": "6d95658a7bc87260",
+        "name": "This is Air purifier and is for sensor 1",
+        "info": "",
+        "x": 860,
+        "y": 540,
         "wires": []
     },
     {
