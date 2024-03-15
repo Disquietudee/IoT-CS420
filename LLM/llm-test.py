@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import pandas as pd
 import os
 from reportlab.pdfgen import canvas
@@ -34,7 +34,7 @@ def generate_model(df_dict):
     
     for sensor, data in df_dict.items():
         time_start = datetime.now()
-        model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=7000)
+        model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=8192)
         
         with model.chat_session(system_template, prompt_template): 
                     print(sensor)
@@ -107,10 +107,10 @@ def create_pdf(report, scaling_factor, logo_path):
     c.save()
 
     
-csv_path = os.path.join(os.getcwd(), "exampledata2.csv")
+csv_path = os.path.join(os.getcwd(), "exampledata.csv")
 df = pd.read_csv(csv_path)
 df = df[df['Sensor Name'].notna()]
-df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).reset_index(drop=True).to_dict()
+df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
 report = generate_model(df_dict)
 logo_path = os.path.join(os.getcwd(), "logo.png")
 create_pdf(report, 0.2, logo_path)
