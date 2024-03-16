@@ -51,5 +51,14 @@ services:
     volumes:
       - ./grafana:/var/lib/grafana
 
+  llm-python:
+    image: "disquietly/llm-python:1.0"
+    container_name: llm-python
+    restart: always
+    volumes:
+      - ./LLM:/app
+    ports:
+      - "5000:5000"
+
 volumes:
   chronograf-storage:
