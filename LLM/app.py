@@ -8,6 +8,7 @@ from reportlab.lib import colors
 from textwrap import wrap
 from PIL import Image
 from gpt4all import GPT4All
+from multiprocessing import Pool
 
 app = Flask(__name__)
 
@@ -34,21 +35,23 @@ def generate_model(df_dict):
     prompt_template = 'USER: {0}\nASSISTANT: '
 
     report = {}
+    sensor, data = df_dict
     
-    
-    for sensor, data in df_dict.items():
-        time_start = datetime.now()
-        model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=8192)
-        
-        with model.chat_session(system_template, prompt_template): 
-                    print(sensor)
 
-                    prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
-                    report[sensor] = model.generate(prompts, temp=0, max_tokens=1024)
-                    
-        del model
-        time_end = datetime.now()
-        print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
+    time_start = datetime.now()
+    print("generating model")
+    model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=8192)
+
+    print("generated model")
+    with model.chat_session(system_template, prompt_template): 
+                print(sensor)
+
+                prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
+                report[sensor] = model.generate(prompts, temp=0, max_tokens=1024)
+                
+    del model
+    time_end = datetime.now()
+    print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
                 
     return report
 
@@ -126,8 +129,7 @@ def create_pdf(report, scaling_factor, logo_path):
         
         c.drawText(t)
         # Draw page number
-        
-        
+
     c.save()
     return report_path
 
@@ -144,13 +146,20 @@ def generate_report():
         return 'No selected file', 400
     if file and allowed_file(file.filename):
         df = pd.read_csv(file)
-        
+    
+    print("Loading data")
     df = df[df['Sensor Name'].notna()]
     df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
-    report = generate_model(df_dict)
+    print("Data loaded")
     
+    with Pool(processes=3) as p:
+        results = p.map(generate_model, df_dict.items())
+    report = {}
+    for result in results:
+        report.update(result)
     logo_path = os.path.join(os.getcwd(), "logo.png")
     pdf_path = create_pdf(report, 0.2, logo_path)
+    print("Report generated")
     return send_file(pdf_path, mimetype='application/pdf')
 
 if __name__ == '__main__':
