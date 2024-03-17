@@ -22,6 +22,8 @@ services:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
       - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_PASSWORD}
+    networks:
+      - vidal_network
 
   chronograf:
     image: chronograf:latest
@@ -35,6 +37,8 @@ services:
       - INFLUXDB_URL=http://influxdb:8086
       - INFLUXDB_USERNAME=${INFLUXDB_USERNAME}
       - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
+    networks:
+      - vidal_network
 
   grafana:
     image: "grafana/${GRAFANA_IMAGE:-grafana:latest}"
@@ -50,6 +54,8 @@ services:
       - "3000:3000"
     volumes:
       - ./grafana:/var/lib/grafana
+    networks:
+      - vidal_network
 
   llm-python:
     image: "disquietly/llm-python:1.0"
@@ -59,15 +65,24 @@ services:
       - ./LLM:/app
     ports:
       - "5000:5000"
+    depends_on:
+      - ollama
+    networks:
+      - vidal_network
 
   ollama:
     image: "ollama/ollama:latest"
     ports:
-      - 11451:11451
+      - 11434:11434
     container_name: ollama
     restart: always
     environment:
       - TZ=Asia/Singapore
+    networks:
+      - vidal_network
 
 volumes:
   chronograf-storage:
+
+networks:
+  vidal_network:

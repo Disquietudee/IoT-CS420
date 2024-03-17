@@ -7,11 +7,16 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from textwrap import wrap
 from PIL import Image
-from ollama import generate
+from ollama import Client
 from multiprocessing import Pool
 
 app = Flask(__name__)
 
+print("Loading model")
+MODEL = 'mistral'
+CLIENT = Client(host='ollama:11434')
+CLIENT.pull(MODEL)
+print("Load model complete")
 
 def generate_model(df_dict):
     system_template = '''You assigned the task of reviewing the sensor data for the living room. The data is collected from the CO2, temperature and humidity sensors. 
@@ -37,8 +42,12 @@ def generate_model(df_dict):
     prompt = "Generate the report for the following sensor data in {}:{} ".format('Living Room',data)
 
     time_start = datetime.now()
+    
     # response = generate('mistral:7b-instruct-v0.2-q8_0',prompt+ system_template)
-    response = generate('mistral',prompt+ system_template)
+    
+    
+    response = CLIENT.generate(MODEL,prompt+ system_template)
+
     report[sensor] = response["response"]
     time_end = datetime.now()
     print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
