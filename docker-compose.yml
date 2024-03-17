@@ -68,6 +68,7 @@ services:
     restart: always
     environment:
       - TZ=Asia/Singapore
+    command: ["ollama","pull","mistral"]
 
 volumes:
   chronograf-storage:
