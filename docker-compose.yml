@@ -51,14 +51,14 @@ services:
     volumes:
       - ./grafana:/var/lib/grafana
 
-  # llm-python:
-  #   image: "disquietly/llm-python:1.0"
-  #   container_name: llm-python
-  #   restart: always
-  #   volumes:
-  #     - ./LLM:/app
-  #   ports:
-  #     - "5000:5000"
+  llm-python:
+    image: "disquietly/llm-python:1.0"
+    container_name: llm-python
+    restart: always
+    volumes:
+      - ./LLM:/app
+    ports:
+      - "5000:5000"
 
   ollama:
     image: "ollama/ollama:latest"
@@ -68,7 +68,6 @@ services:
     restart: always
     environment:
       - TZ=Asia/Singapore
-    command: ["ollama","pull","mistral"]
 
 volumes:
   chronograf-storage:

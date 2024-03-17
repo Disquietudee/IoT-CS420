@@ -7,7 +7,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from textwrap import wrap
 from PIL import Image
-from ollama import generate
+from gpt4all import GPT4All
 from multiprocessing import Pool
 
 app = Flask(__name__)
@@ -30,15 +30,26 @@ def generate_model(df_dict):
     3. Humidity Trend Analysis:
     4. Conclusion:
     5. Recommendation:
-    
+
     '''
+    prompt_template = 'USER: {0}\nASSISTANT: '
 
     report = {}
     sensor, data = df_dict
-    prompt = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
+    
 
     time_start = datetime.now()
-    report = generate('mistral',system_template+prompt)
+    print("generating model")
+    model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=8192)
+
+    print("generated model")
+    with model.chat_session(system_template, prompt_template): 
+                print(sensor)
+
+                prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
+                report[sensor] = model.generate(prompts, temp=0, max_tokens=1024)
+                
+    del model
     time_end = datetime.now()
     print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
                 

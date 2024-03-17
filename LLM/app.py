@@ -7,15 +7,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from textwrap import wrap
 from PIL import Image
-from gpt4all import GPT4All
+from ollama import generate
 from multiprocessing import Pool
 
 app = Flask(__name__)
 
 
 def generate_model(df_dict):
-    system_template = '''
-    You are given a dataset of CO2 with unit of ppm, temperature with unit of degree celsius and humidity with unit of percentage sensor readings.
+    system_template = '''You assigned the task of reviewing the sensor data for the living room. The data is collected from the CO2, temperature and humidity sensors. 
 
     There are threshold to indicate that it is green, amber or red.
     For CO2, the threshold for green is below 600ppm, 600 to 800 ppm for amber and above 800 ppm for red.
@@ -23,36 +22,27 @@ def generate_model(df_dict):
     For Humidity, the threshold for green is below 60 percentage, 60 to 65 percentage for amber and above 65 percentage for red.
 
     You are to analyse the trend and spot any potential problem areas in the data.
-    The report must strictly follow the following format starting with the title: 
+    The report must strictly follow the following format: 
 
     1. CO2 emissions Trend Analysis:
     2. Temperature Trend Analysis:
     3. Humidity Trend Analysis:
     4. Conclusion:
     5. Recommendation:
-
+    
     '''
-    prompt_template = 'USER: {0}\nASSISTANT: '
 
     report = {}
     sensor, data = df_dict
-    
+    prompt = "Generate the report for the following sensor data in {}:{} ".format('Living Room',data)
 
     time_start = datetime.now()
-    print("generating model")
-    model = GPT4All("mistral-7b-instruct-v0.2.Q8_0.gguf", model_path=".",allow_download=False,n_ctx=8192)
-
-    print("generated model")
-    with model.chat_session(system_template, prompt_template): 
-                print(sensor)
-
-                prompts = 'Generate the report for the following sensor data in {}:{} '.format('Living Room',data)
-                report[sensor] = model.generate(prompts, temp=0, max_tokens=1024)
-                
-    del model
+    # response = generate('mistral:7b-instruct-v0.2-q8_0',prompt+ system_template)
+    response = generate('mistral',prompt+ system_template)
+    report[sensor] = response["response"]
     time_end = datetime.now()
     print('Time taken for sensor {} is {}'.format(sensor, time_end - time_start))
-                
+    
     return report
 
 def create_pdf(report, scaling_factor, logo_path):
@@ -152,12 +142,14 @@ def generate_report():
     df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
     print("Data loaded")
     
-    with Pool(processes=1) as p:
+    with Pool(processes=3) as p:
+    # with Pool() as p:
         results = p.map(generate_model, df_dict.items())
     report = {}
     for result in results:
         report.update(result)
     logo_path = os.path.join(os.getcwd(), "logo.png")
+    
     pdf_path = create_pdf(report, 0.2, logo_path)
     print("Report generated")
     return send_file(pdf_path, mimetype='application/pdf')

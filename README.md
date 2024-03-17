@@ -1,6 +1,6 @@
 ### To start the docker:
 ```
-sudo docker-compose up -d
+sudo docker-compose up -d && docker exec -it ollama ollama pull mistral
 ```
 
 ### NodeRed:
