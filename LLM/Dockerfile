@@ -5,9 +5,7 @@ FROM python:3.12.2-slim
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY ./logo.png /app
-COPY ./mistral-7b-instruct-v0.2.Q8_0.gguf /app
-COPY ./requirements.txt /app
+COPY . /app
 
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
