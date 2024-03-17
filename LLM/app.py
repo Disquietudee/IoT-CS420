@@ -152,7 +152,7 @@ def generate_report():
     df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
     print("Data loaded")
     
-    with Pool(processes=3) as p:
+    with Pool(processes=1) as p:
         results = p.map(generate_model, df_dict.items())
     report = {}
     for result in results:
