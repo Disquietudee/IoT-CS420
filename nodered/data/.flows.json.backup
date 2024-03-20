@@ -150,7 +150,7 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "20",
+                "v": "820",
                 "vt": "num"
             },
             {
@@ -265,7 +265,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 640,
-        "y": 240,
+        "y": 160,
         "wires": []
     },
     {
@@ -277,14 +277,13 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 400,
+        "x": 370,
         "y": 280,
         "wires": [
             [
                 "b7a97eec10133ed7",
                 "6c7c63d6e322095f",
-                "5e25620e30b525d1",
-                "4d5ffd7ecc3a3f2b"
+                "0d0e0c0edb31e33e"
             ]
         ]
     },
@@ -296,44 +295,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 630,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "5e25620e30b525d1",
-        "type": "function",
-        "z": "6d95658a7bc87260",
-        "name": "function 2",
-        "func": "var alerts = msg.payload.alerts[0];\n// var value = payload.commonAnnotations.value\nvar value = Number(alerts.annotations.value)\n\nreturn value.toString();",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 120,
-        "wires": [
-            [
-                "e0a8c4260e9a6c43"
-            ]
-        ]
-    },
-    {
-        "id": "e0a8c4260e9a6c43",
-        "type": "debug",
-        "z": "6d95658a7bc87260",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 120,
+        "y": 280,
         "wires": []
     },
     {
@@ -345,9 +307,59 @@
         "links": [
             "ab97912a09170366"
         ],
-        "x": 515,
-        "y": 440,
+        "x": 845,
+        "y": 380,
         "wires": []
+    },
+    {
+        "id": "0d0e0c0edb31e33e",
+        "type": "function",
+        "z": "6d95658a7bc87260",
+        "name": "process alert payload",
+        "func": "var sensor = msg.payload;\nvar sensor_name = sensor.alerts[0].labels.alertname;\nvar paremeter = sensor.alerts[0].labels.grafana_folder;\nvar status = sensor.alerts[0].status;\n\nvar x = \"\";\n\nif (sensor_name.includes(\"AM319-Sensor_1\") && paremeter === \"CO2\"){\n    if (status === \"firing\") {\n        x = \"true\";\n    } else {\n        x = \"false\";\n    }\n}\n\nmsg.payload = '{\"commands\":[{\"code\":\"switch_1\",\"value\":'+ x +'}]}';\nmsg.time = Date.now();\nmsg.x = x;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 380,
+        "wires": [
+            [
+                "4d5ffd7ecc3a3f2b"
+            ]
+        ]
+    },
+    {
+        "id": "9b4bf30a356f2a27",
+        "type": "inject",
+        "z": "6d95658a7bc87260",
+        "name": "testing",
+        "props": [
+            {
+                "p": "timqqq",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"alerts\":[{\"status\":\"firing\",\"labels\":{\"alertname\":\"[CO2] AM319-Sensor_1 (>800) \",\"grafana_folder\":\"CO2\"},\"annotations\":{\"Mitigation\":\"Open windows or doors to allow fresh air to enter the space till the levels drop below 550ppm.\",\"value\":\"890\"},\"startsAt\":\"2024-03-16T01:59:00+08:00\",\"endsAt\":\"0001-01-01T00:00:00Z\",\"generatorURL\":\"http://localhost:3000/alerting/grafana/e226f23c-aca9-4e61-8826-31dddcc9af5b/view?orgId=1\",\"fingerprint\":\"45c12038deb2462a\",\"silenceURL\":\"http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3D%5BCO2%5D+AM319-Sensor_1+%28%3E800%29+&matcher=grafana_folder%3DCO2&orgId=1\",\"dashboardURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1\",\"panelURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1&viewPanel=1\",\"values\":{\"B\":890,\"C\":1},\"valueString\":\"[ var='B' labels={} value=890 ], [ var='C' labels={} value=1 ]\"}]}",
+        "payloadType": "json",
+        "x": 470,
+        "y": 480,
+        "wires": [
+            [
+                "0d0e0c0edb31e33e"
+            ]
+        ]
     },
     {
         "id": "2ba384c30b1e3525",
@@ -760,56 +772,6 @@
         ]
     },
     {
-        "id": "0d0e0c0edb31e33e",
-        "type": "function",
-        "z": "7b9f7c363480fe4d",
-        "name": "process payload from alert",
-        "func": "var sensor = msg.payload;\nvar sensor_name = sensor.alerts[0].labels.alertname;\nvar paremeter = sensor.alerts[0].labels.grafana_folder;\nvar status = sensor.alerts[0].status;\n\nvar x = \"\";\n\nif (sensor_name.includes(\"AM319-Sensor_1\") && paremeter === \"CO2\"){\n    if (status === \"firing\") {\n        x = \"true\";\n    } else {\n        x = \"false\";\n    }\n}\n\nmsg.payload = '{\"commands\":[{\"code\":\"switch_1\",\"value\":'+ x +'}]}';\nmsg.time = Date.now();\nmsg.x = x;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 320,
-        "wires": [
-            [
-                "9d794d23425abd68"
-            ]
-        ]
-    },
-    {
-        "id": "9b4bf30a356f2a27",
-        "type": "inject",
-        "z": "7b9f7c363480fe4d",
-        "name": "testing",
-        "props": [
-            {
-                "p": "timqqq",
-                "v": "",
-                "vt": "date"
-            },
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"alerts\":[{\"status\":\"firing\",\"labels\":{\"alertname\":\"[CO2] AM319-Sensor_1 (>800) \",\"grafana_folder\":\"CO2\"},\"annotations\":{\"Mitigation\":\"Open windows or doors to allow fresh air to enter the space till the levels drop below 550ppm.\",\"value\":\"890\"},\"startsAt\":\"2024-03-16T01:59:00+08:00\",\"endsAt\":\"0001-01-01T00:00:00Z\",\"generatorURL\":\"http://localhost:3000/alerting/grafana/e226f23c-aca9-4e61-8826-31dddcc9af5b/view?orgId=1\",\"fingerprint\":\"45c12038deb2462a\",\"silenceURL\":\"http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3D%5BCO2%5D+AM319-Sensor_1+%28%3E800%29+&matcher=grafana_folder%3DCO2&orgId=1\",\"dashboardURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1\",\"panelURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1&viewPanel=1\",\"values\":{\"B\":890,\"C\":1},\"valueString\":\"[ var='B' labels={} value=890 ], [ var='C' labels={} value=1 ]\"}]}",
-        "payloadType": "json",
-        "x": 110,
-        "y": 340,
-        "wires": [
-            [
-                "0d0e0c0edb31e33e"
-            ]
-        ]
-    },
-    {
         "id": "45a23539726a3eab",
         "type": "comment",
         "z": "7b9f7c363480fe4d",
@@ -827,11 +789,11 @@
         "links": [
             "4d5ffd7ecc3a3f2b"
         ],
-        "x": 135,
-        "y": 280,
+        "x": 165,
+        "y": 340,
         "wires": [
             [
-                "0d0e0c0edb31e33e"
+                "9d794d23425abd68"
             ]
         ]
     },
