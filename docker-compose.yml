@@ -51,7 +51,7 @@ services:
       TZ: "Asia/Singapore"
       GF_SECURITY_ADMIN_USER: ${GRAFANA_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD}
-      GF_INSTALL_PLUGINS: nline-plotlyjs-panel,volkovlabs-form-panel, briangann-gauge-panel, gapit-htmlgraphics-panel
+      GF_INSTALL_PLUGINS: nline-plotlyjs-panel,volkovlabs-form-panel, briangann-gauge-panel, gapit-htmlgraphics-panel, agenty-flowcharting-panel
     ports:
       - "3000:3000"
     volumes:
