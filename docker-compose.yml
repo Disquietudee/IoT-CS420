@@ -11,6 +11,8 @@ services:
       - "1880:1880"
     volumes:
       - ./nodered/data:/data
+    networks:
+      - vidal_network
 
   influxdb:
     image: influxdb:1.8.10
