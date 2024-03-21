@@ -60,7 +60,7 @@ services:
       - vidal_network
 
   llm-python:
-    image: "disquietly/llm-python:1.0"
+    image: "disquietly/llm-python:1.1"
     container_name: llm-python
     restart: always
     volumes:
