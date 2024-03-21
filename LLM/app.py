@@ -44,10 +44,7 @@ def generate_model(df_dict):
     prompt = "Generate the report for the following sensor data in {}:{} ".format('Living Room',data)
 
     time_start = datetime.now()
-    
-    # response = generate('mistral:7b-instruct-v0.2-q8_0',prompt+ system_template)
-    
-    
+    print('Generating report for sensor {}'.format(sensor))
     response = CLIENT.generate(MODEL,prompt+ system_template)
 
     report[sensor] = response["response"]
@@ -153,7 +150,7 @@ def generate_report():
     df_dict = df.groupby('deviceName').apply(lambda x: x.drop('deviceName', axis=1).values.tolist()).to_dict()
     print("Data loaded")
     
-    with Pool(processes=3) as p:
+    with Pool(processes=2) as p:
     # with Pool() as p:
         results = p.map(generate_model, df_dict.items())
     report = {}

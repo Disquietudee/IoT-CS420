@@ -27,20 +27,20 @@ services:
     networks:
       - vidal_network
 
-  chronograf:
-    image: chronograf:latest
-    ports:
-      - '8888:8888'
-    volumes:
-      - chronograf-storage:/var/lib/chronograf
-    depends_on:
-      - influxdb
-    environment:
-      - INFLUXDB_URL=http://influxdb:8086
-      - INFLUXDB_USERNAME=${INFLUXDB_USERNAME}
-      - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
-    networks:
-      - vidal_network
+  # chronograf:
+  #   image: chronograf:latest
+  #   ports:
+  #     - '8888:8888'
+  #   volumes:
+  #     - chronograf-storage:/var/lib/chronograf
+  #   depends_on:
+  #     - influxdb
+  #   environment:
+  #     - INFLUXDB_URL=http://influxdb:8086
+  #     - INFLUXDB_USERNAME=${INFLUXDB_USERNAME}
+  #     - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
+  #   networks:
+  #     - vidal_network
 
   grafana:
     image: "grafana/${GRAFANA_IMAGE:-grafana:latest}"
@@ -64,7 +64,7 @@ services:
     container_name: llm-python
     restart: always
     volumes:
-      - ./LLM:/app
+      - LLM:/app
     ports:
       - "5000:5000"
     depends_on:
@@ -84,7 +84,8 @@ services:
       - vidal_network
 
 volumes:
-  chronograf-storage:
+  LLM:
+#   chronograf-storage:
 
 networks:
   vidal_network:
