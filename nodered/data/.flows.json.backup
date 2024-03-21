@@ -353,8 +353,8 @@
         "topic": "",
         "payload": "{\"alerts\":[{\"status\":\"firing\",\"labels\":{\"alertname\":\"[CO2] AM319-Sensor_1 (>800) \",\"grafana_folder\":\"CO2\"},\"annotations\":{\"Mitigation\":\"Open windows or doors to allow fresh air to enter the space till the levels drop below 550ppm.\",\"value\":\"890\"},\"startsAt\":\"2024-03-16T01:59:00+08:00\",\"endsAt\":\"0001-01-01T00:00:00Z\",\"generatorURL\":\"http://localhost:3000/alerting/grafana/e226f23c-aca9-4e61-8826-31dddcc9af5b/view?orgId=1\",\"fingerprint\":\"45c12038deb2462a\",\"silenceURL\":\"http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3D%5BCO2%5D+AM319-Sensor_1+%28%3E800%29+&matcher=grafana_folder%3DCO2&orgId=1\",\"dashboardURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1\",\"panelURL\":\"http://localhost:3000/d/c8a297eb-1b16-4e8a-84c8-620896b59074?orgId=1&viewPanel=1\",\"values\":{\"B\":890,\"C\":1},\"valueString\":\"[ var='B' labels={} value=890 ], [ var='C' labels={} value=1 ]\"}]}",
         "payloadType": "json",
-        "x": 470,
-        "y": 480,
+        "x": 450,
+        "y": 380,
         "wires": [
             [
                 "0d0e0c0edb31e33e"
@@ -835,8 +835,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload.result",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 1220,
