@@ -147,8 +147,8 @@ def generate_report():
         df = pd.read_csv(file)
     
     print("Loading data")
-    df = df[df['Sensor Name'].notna()]
-    df_dict = df.groupby('Sensor Name').apply(lambda x: x.drop('Sensor Name', axis=1).values.tolist()).to_dict()
+    df = df[df['deviceName'].notna()]
+    df_dict = df.groupby('deviceName').apply(lambda x: x.drop('deviceName', axis=1).values.tolist()).to_dict()
     print("Data loaded")
     
     with Pool(processes=3) as p:
