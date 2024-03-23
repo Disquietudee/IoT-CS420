@@ -60,7 +60,8 @@ services:
       - vidal_network
 
   llm-python:
-    image: "disquietly/llm-python:1.0"
+    platform: linux/arm64
+    image: "disquietly/llm-python:1.1-linux"
     container_name: llm-python
     restart: always
     volumes:
@@ -69,6 +70,7 @@ services:
       - "5000:5000"
     depends_on:
       - ollama
+    domainname: llm.local
     networks:
       - vidal_network
 
@@ -89,3 +91,5 @@ volumes:
 
 networks:
   vidal_network:
+    driver: bridge
+

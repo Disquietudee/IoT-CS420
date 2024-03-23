@@ -12,7 +12,7 @@ from ollama import Client
 from multiprocessing import Pool
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origin="*")
 
 print("Loading model")
 MODEL = 'mistral'
