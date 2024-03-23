@@ -61,7 +61,7 @@ services:
 
   llm-python:
     platform: linux/arm64
-    image: "disquietly/llm-python:1.1-linux"
+    image: "jingminhu2021/llm-python:1.1-linux"
     container_name: llm-python
     restart: always
     volumes:

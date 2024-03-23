@@ -10,9 +10,15 @@ from textwrap import wrap
 from PIL import Image
 from ollama import Client
 from multiprocessing import Pool
+import requests
 
 app = Flask(__name__)
 CORS(app, origin="*")
+
+# Telegram bot credentials
+bot_token = '6947537149:AAHi7yT8z5NqkxtNytA_0Inc8knzCJ1hIrE'
+chat_id = '-1002140599828' 
+message_thread_id = '5'
 
 print("Loading model")
 MODEL = 'mistral'
@@ -134,9 +140,29 @@ def create_pdf(report, scaling_factor, logo_path):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'csv'
 
+def send_telegram_document(pdf_path, filename):
+    url = f"https://api.telegram.org/bot{bot_token}/sendDocument"
+    params = {
+        'chat_id': chat_id,
+        'message_thread_id': message_thread_id
+    }
+    try:
+        with open(pdf_path, 'rb') as file:
+            files = {'document': (filename, file)}
+            response = requests.post(url, params=params, files=files)
+            response.raise_for_status()
+            print("Document sent to telegram")
+    except FileNotFoundError:
+        print(f"File '{pdf_path}' not found.")
+    except requests.RequestException as e:
+        print("Error sending document:", e)
+
+
 @app.route('/generate_report', methods=['POST'])
 def generate_report():
     print(len(request.files))
+    print("-----------------")
+    print(request.files['file'].filename)
     if 'file' not in request.files:
         return 'No file part in the request', 400
     file = request.files['file']
@@ -160,6 +186,11 @@ def generate_report():
     
     pdf_path = create_pdf(report, 0.2, logo_path)
     print("Report generated")
+
+    # Send document to telegram
+    name = file.filename.split(".csv")[0]
+    send_telegram_document(pdf_path, "Report-"+name+".pdf")
+
     return send_file(pdf_path, mimetype='application/pdf')
 
 if __name__ == '__main__':
