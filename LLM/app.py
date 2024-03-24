@@ -11,7 +11,6 @@ from PIL import Image
 from ollama import Client
 from multiprocessing import Pool
 import requests
-import os
 
 app = Flask(__name__)
 CORS(app, origin="*")
