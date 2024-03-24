@@ -11,14 +11,15 @@ from PIL import Image
 from ollama import Client
 from multiprocessing import Pool
 import requests
+import os
 
 app = Flask(__name__)
 CORS(app, origin="*")
 
 # Telegram bot credentials
-bot_token = '6947537149:AAHi7yT8z5NqkxtNytA_0Inc8knzCJ1hIrE'
-chat_id = '-1002140599828' 
-message_thread_id = '5'
+bot_token = os.getenv("BOT_TOKEN")
+chat_id = os.getenv("CHAT_ID")
+message_thread_id = os.getenv("MESSAGE_THREAD_ID")
 
 print("Loading model")
 MODEL = 'mistral'
