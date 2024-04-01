@@ -150,12 +150,12 @@
         "props": [
             {
                 "p": "payload.co2",
-                "v": "820",
+                "v": "34",
                 "vt": "num"
             },
             {
                 "p": "payload.humidity",
-                "v": "23",
+                "v": "10",
                 "vt": "num"
             },
             {
@@ -165,12 +165,12 @@
             },
             {
                 "p": "payload.devEUI",
-                "v": "24e124710c140971",
+                "v": "24e124710c403428",
                 "vt": "str"
             },
             {
                 "p": "payload.deviceName",
-                "v": "AM319-Sensor_1",
+                "v": "AM319-Sensor_3",
                 "vt": "str"
             },
             {
@@ -775,9 +775,9 @@
         "id": "45a23539726a3eab",
         "type": "comment",
         "z": "7b9f7c363480fe4d",
-        "name": "This is a Air purifier and is at sensor 1's location (Auto On/Off on event trigger from alert when CO2 hits the threshold)",
+        "name": "This is a Air purifier and is at sensor 1's location (Auto On/Off on event trigger from alert when CO2 exceeded the threshold)",
         "info": "",
-        "x": 660,
+        "x": 680,
         "y": 380,
         "wires": []
     },
@@ -807,7 +807,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload.result",
+        "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
@@ -835,7 +835,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload.result",
+        "complete": "x",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
