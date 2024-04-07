@@ -22,3 +22,13 @@ By default, it was
 username: admin
 password: admin
 ```
+### Change Tuya credentials in NodeRed
+```
+Create Tuya account and link the devices to the account
+In the NodeRed navigate to "Trigger Smart Life Devices" Tab > "Inital Values Setup" Node > "On Start" Tab
+
+Change: 
+1. client_id
+2. user_id
+3. device_id
+```
