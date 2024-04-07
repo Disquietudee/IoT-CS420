@@ -15,13 +15,21 @@ On the browser enter
 https://server-ip:3000
 ```
 
-### Change Username:
+### Change Username for influxdb and grafana:
 Change the username on the file .env
 By default, it was
 ```
 username: admin
 password: admin
 ```
+
+### Change Telegram for LLM
+```
+BOT_TOKEN=your_bot_token
+CHAT_ID=your_chat_id
+MESSAGE_THREAD_ID=your_message_thread_id
+```
+
 ### Change Tuya credentials in NodeRed
 ```
 Create Tuya account and link the devices to the account
