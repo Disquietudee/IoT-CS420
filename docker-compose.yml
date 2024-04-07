@@ -27,21 +27,6 @@ services:
     networks:
       - vidal_network
 
-  # chronograf:
-  #   image: chronograf:latest
-  #   ports:
-  #     - '8888:8888'
-  #   volumes:
-  #     - chronograf-storage:/var/lib/chronograf
-  #   depends_on:
-  #     - influxdb
-  #   environment:
-  #     - INFLUXDB_URL=http://influxdb:8086
-  #     - INFLUXDB_USERNAME=${INFLUXDB_USERNAME}
-  #     - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
-  #   networks:
-  #     - vidal_network
-
   grafana:
     image: "grafana/${GRAFANA_IMAGE:-grafana:latest}"
     container_name: grafana
@@ -74,9 +59,9 @@ services:
     networks:
       - vidal_network
     environment:
-      - BOT_TOKEN=6947537149:AAHi7yT8z5NqkxtNytA_0Inc8knzCJ1hIrE
-      - CHAT_ID=-1002140599828
-      - MESSAGE_THREAD_ID=5
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+      - MESSAGE_THREAD_ID=${MESSAGE_THREAD_ID}
 
   ollama:
     image: "ollama/ollama:latest"
@@ -91,7 +76,6 @@ services:
 
 volumes:
   LLM:
-#   chronograf-storage:
 
 networks:
   vidal_network:
