@@ -40,3 +40,10 @@ Change:
 2. user_id
 3. device_id
 ```
+
+### Change API Key for Weather data in NodeRed
+```
+1. In NodeRed, navigate to "Get Weather Data" Tab
+2. Select openweathermap node "Singapore"
+3. Add API Key from OpenWeatherMap
+```
